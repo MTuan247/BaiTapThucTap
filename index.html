@@ -1,0 +1,364 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/pages/employee/navbar.css">
+    <link rel="stylesheet" href="./assets/css/pages/employee/header.css">
+    <link rel="stylesheet" href="./assets/css/pages/employee/content.css">
+    <link rel="stylesheet" href="./assets/css/common/button.css">
+    <link rel="stylesheet" href="./assets/css/common/text.css">
+    <link rel="stylesheet" href="./assets/css/common/dropdown.css">
+    <link rel="stylesheet" href="./assets/css/common/input.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-site">
+            <div class="toggle-icon" style="background-image: url('./assets/img/toggle.png');"></div>
+            <div class="site-icon" style="background-image: url('./assets/img/cukcuk-logo.png');"></div>
+        </div>
+        <div class="navbar-content">
+            <div class="nav-item">
+                <div class="nav-item-icon" style="background-image: url('./assets/icon/dashboard.png')"></div>
+                <div class="nav-item-text">Tổng quan</div>     
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-icon" style="background-image: url('./assets/icon/report.png')"></div>
+                <div class="nav-item-text">Báo cáo</div>     
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-icon" style="background-image: url('./assets/icon/dashboard.png')"></div>
+                <div class="nav-item-text">Mua hàng</div>     
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-icon" style="background-image: url('./assets/icon/dic-employee.png')"></div>
+                <div class="nav-item-text">Danh mục nhân viên</div>     
+            </div>
+            <div class="nav-item">
+                <div class="nav-item-icon" style="background-image: url('./assets/icon/setting.png')"></div>
+                <div class="nav-item-text">Thiết lập hệ thống</div>     
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header-title">
+            <div class="text-title2">Nhà hàng biển đông</div>
+            <div class="dropdown-icon div-icon" style="background-image: url('./assets/icon/angle-down-solid.svg')"></div>
+        </div>
+        <div class="account">
+            <div class="avatar" style="background-image: url('./assets/icon/avatar-default.png');"></div>
+            <div class="username text-title2">Nguyễn Văn Mạnh</div>
+            <div class="icon" style="background-image: url('./assets/icon/option.png');"></div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-header">
+            <div class="content-title text-title">Danh sách nhân viên</div>
+            <div class="content-title-btn btn-icon">
+                <div class="icon-left div-icon" style="background-image: url('./assets/icon/add.png');"></div>
+                <div>Thêm nhân viên</div>
+            </div>
+        </div>
+        <div class="filter-bar">
+            <div class="filter-area">
+
+                <div class="search-field field">
+                    <div class="div-icon input-icon" style="background-image: url('./assets/icon/search.png');"></div>
+                    <input type="search" name="" id="" placeholder="Tìm kiếm">
+                    <i class="fa fa-times icon-right" aria-hidden="true"></i>
+                </div>
+                
+                <div class="filter dropdown">
+                    <div class="value dropdown-text">Tất cả phòng ban</div>
+                    <i class="fa fa-caret-down icon-right" aria-hidden="true"></i>
+                    <div class="collapse">
+                        <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Phòng ban 1</div>
+                        <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Phòng ban 2</div>
+                        <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Phòng ban 3</div>
+                    </div>
+                </div>
+
+                <div class="filter dropdown">
+                    <div class="value dropdown-text">Tất cả vị trí</div>
+                    <i class="fa fa-caret-down icon-right" aria-hidden="true"></i>
+                    <div class="collapse">
+                        <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Vị trí 1</div>
+                        <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Vị trí 2</div>
+                        <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Vị trí 3</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="refresh btn-seconds" style="background-image: url('./assets/icon/refresh.png');">
+            </div>
+        </div>
+        <div class="grid">
+            <table cellspacing=0 >
+                <tr>
+                    <th style="width: 50px;"></th>
+                    <th style="width: 50px;">#</th>
+                    <th style="width: 120px;">Mã nhân viên</th>
+                    <th style="width: 200px;">Họ tên</th>
+                    <th style="width: 100px;">Giới tính</th>
+                    <th style="width: 150px;">Ngày sinh</th>
+                    <th style="width: 150px;">Điện thoại</th>
+                    <th style="width: 200px;">Email</th>
+                    <th style="width: 150px;">Vị trí/Chức vụ</th>
+                    <th style="width: 180px;">Bộ phận/Phòng ban</th>
+                    <th style="width: 180px;">Mức lương cơ bản</th>
+                    <th style="width: 200px;">Tình trạng công việc</th>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>2</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+                <tr>
+                    <td class="check-box" ><input type="checkbox" name="" id=""></td>
+                    <td>1</td>
+                    <td>MF900</td>
+                    <td>NMT</td>
+                    <td>Nam</td>
+                    <td>24/07/2000</td>
+                    <td>0339642686</td>
+                    <td>abc123456@zxc.vn</td>
+                    <td>Web Fresher</td>
+                    <td>Khối sản xuất</td>
+                    <td>10.000</td>
+                    <td>Intern</td>
+                </tr>
+            </table>
+        </div>
+        <div class="paging-bar">
+            <div class="paging-left">
+                Hiển thị 1-10/1000 nhân viên
+            </div>
+            <div class="paging-center">
+                <div class="paging-item paging-control" style="background-image: url('./assets/icon/btn-firstpage.svg');"></div>
+                <div class="paging-item paging-control" style="background-image: url('./assets/icon/btn-prev-page.svg');"></div>
+                <div class="paging-item paging-number--active">1</div>
+                <div class="paging-item paging-number">2</div>
+                <div class="paging-item paging-number">3</div>
+                <div class="paging-item paging-number">4</div>
+                <div class="paging-item paging-control" style="background-image: url('./assets/icon/btn-next-page.svg');"></div>
+                <div class="paging-item paging-control" style="background-image: url('./assets/icon/btn-lastpage.svg');"></div>
+            </div>
+            <div class="paging-right">
+                10 nhân viên/trang
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./assets/js/dropdown.js"></script>
+<script src="./assets/js/input.js"></script>
+</html>
