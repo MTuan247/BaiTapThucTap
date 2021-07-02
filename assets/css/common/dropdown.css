@@ -11,6 +11,13 @@
     position: relative;
     display: flex;
     align-items: center;
+
+    user-select: none;
+}
+
+.dropdown:focus {
+    outline: none;
+    border-color: #019160;
 }
 
 .dropdown:hover {
@@ -38,7 +45,6 @@
 .dropdown .dropdown-item {
     z-index: 10;
     line-height: 40px;
-    padding-left: 16px;
     height: 40px;
     width: 100%;
     size: 13px;
@@ -51,12 +57,11 @@
 .dropdown .icon-right {
     position: absolute;
     right: 16px;
-    height: 16px;
-    width: 16px;
+    font-size: 16px;
 }
 
 .dropdown .dropdown-item .icon-left {
-    padding-right: 8px;
+    padding: 0px 10px;
     opacity: 0;
 }
 
@@ -67,4 +72,8 @@
 
 .dropdown .dropdown-item--selected .icon-left {
     opacity: 1;
+}
+
+.dropdown .rotate {
+    transform: rotate(180deg);
 }
