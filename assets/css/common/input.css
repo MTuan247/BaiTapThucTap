@@ -97,6 +97,11 @@
     display: block;
 }
 
+.field-label #salary {
+    text-align: right;
+    padding-right: 40px;
+}
+
 /*Remove default icon in input */
 
 input::-webkit-outer-spin-button,
@@ -114,6 +119,8 @@ input[type=number] {
   -webkit-appearance: none;
   appearance: none;
 }
+
+/* CSS Warning */
 
 .input-warning {
     opacity: 0;

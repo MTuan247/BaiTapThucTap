@@ -1,20 +1,33 @@
-// $(document).ready(function(){
-//     $(".dropdown").click(function(){
-//       $(".filter-bar .filter .collapse").toggle();
-//     });
-// });
+
+// Xử lý các affect của dropdown
+
 
 $(document).ready(function () {
     $(".dropdown").click(function () {
-        $(this).find('.collapse').fadeToggle()
-        $(this).find('.icon-right').toggleClass('rotate')
+        toggleFade(this)
+    });
+});
+
+
+$(document).ready(function () {
+    $(".dropdown").keypress(function (e) {
+        if (e.code == "Enter") {
+            toggleFade(this)
+        }
     });
 });
 
 $(document).ready(function () {
     $(".dropdown .dropdown-item").click(function () {
-        let itemSelected = $(this).text();
-        $(this).parent().parent().find('.value').text(itemSelected)
+        selectItem(this)
+    });
+});
+
+$(document).ready(function () {
+    $(".dropdown .dropdown-item").keypress(function (e) {
+        if (e.code == "Enter") {
+            selectItem(this)
+        }
     });
 });
 
@@ -25,7 +38,7 @@ window.onclick = function (event) {
         var i;
         for (i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];
-            if ($(openDropdown).css('display') == 'block' ) {
+            if ($(openDropdown).css('display') == 'block') {
                 $(icon).removeClass('rotate')
                 $(openDropdown).css('display', "none");
             }
@@ -33,21 +46,43 @@ window.onclick = function (event) {
     }
 }
 
-$(document).ready(function () {
-    $(".dropdown").click(function () {
-        let dropdown = $(".dropdown");
-        for (let i = 0 ; i < dropdown.length; i++ ){
-            let value = $(dropdown[i]).find('.value');
-            let items = $(dropdown[i]).find('.dropdown-item');
-            for ( let j = 0; j < items.length; j++){
-                let item = items[j]
-                if($(item).text() == $(value).text()){
-                    $(item).addClass('dropdown-item--selected')
-                } else {
-                    $(item).removeClass('dropdown-item--selected')
-                }
-            }
 
+/* 
+    Hàm ẩn hiện collapse trong dropdown
+
+*/
+function toggleFade(el) {
+    $(el).find('.collapse').fadeToggle()
+    $(el).find('.icon-right').toggleClass('rotate')
+    detectSelectDropdownItem()
+}
+
+/* 
+    Hàm chọn item trong dropdown
+
+*/
+function selectItem(el) {
+    let itemSelected = $(el).text();
+    $(el).parent().parent().find('.value').text(itemSelected)
+}
+
+/* 
+    Hàm xác định dropdown-item đã được chọn
+
+*/
+function detectSelectDropdownItem() {
+    let dropdown = $(".dropdown");
+    for (let i = 0; i < dropdown.length; i++) {
+        let value = $(dropdown[i]).find('.value');
+        let items = $(dropdown[i]).find('.dropdown-item');
+        for (let j = 0; j < items.length; j++) {
+            let item = items[j]
+            if ($(item).text() == $(value).text()) {
+                $(item).addClass('dropdown-item--selected')
+            } else {
+                $(item).removeClass('dropdown-item--selected')
+            }
         }
-    });
-});
+
+    }
+}

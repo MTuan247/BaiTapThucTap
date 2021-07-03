@@ -54,6 +54,11 @@
     background-color: #E9EBEE;
 }
 
+.dropdown .dropdown-item:focus {
+    background-color: #E9EBEE;
+    outline: none;
+}
+
 .dropdown .icon-right {
     position: absolute;
     right: 16px;
@@ -72,6 +77,14 @@
 
 .dropdown .dropdown-item--selected .icon-left {
     opacity: 1;
+}
+
+.dropdown .dropdown-item--selected:focus{
+    color: #019160;
+}
+
+.dropdown .dropdown-item--selected:focus .icon-left {
+    color: #019160;
 }
 
 .dropdown .rotate {
