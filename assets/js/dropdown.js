@@ -27,6 +27,7 @@ $(document).ready(function () {
     $(".dropdown .dropdown-item").keypress(function (e) {
         if (e.code == "Enter") {
             selectItem(this)
+            $(this).closest('dropdown').focus()
         }
     });
 });
