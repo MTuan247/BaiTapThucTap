@@ -33,7 +33,7 @@
                         <div class="form__input">
                             <div class="field-label">
                                 <div class="input-warning">
-                                    Định dạng không đúng
+                                    <span>Định dạng không đúng</span>
                                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>
                                 <div class="label">Mã nhân viên (<span style="color: red;">*</span>)</div>
@@ -143,8 +143,9 @@
                 </div>
             </div>
             <div class="form__footer">
-                <div class="btn-seconds">Hủy</div>
-                <input type="submit" class="btn-icon" value="Lưu" title="Lưu">
+                <!-- <div type="reset" id="Cancel" class="btn-seconds">Hủy</div> -->
+                <input type="reset" id="cancel" value="Hủy" class="btn-seconds" title="Hủy">
+                <input id="submit" type="submit" class="btn-icon" value="Lưu" title="Lưu">
                 <!-- <div class="btn-icon">Lưu</div> -->
             </div>
         </form>

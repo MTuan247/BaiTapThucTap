@@ -91,6 +91,21 @@
     top: 0;
     background-color: white;
     z-index: 1;
+    text-align: left;
+}
+
+.grid td {
+    color: #222222;
+    font-family: GoogleSans-Light;
+}
+
+.grid .text-align-center {
+    text-align: center;
+}
+
+.grid .text-align-right {
+    text-align: right;
+    padding-right: 20px;
 }
 
 .grid tr:nth-child(even) {
@@ -141,15 +156,6 @@
 
 .grid .custom-checkbox--selected i {
     display: block;
-}
-
-.grid th {
-    text-align: left;
-}
-
-.grid td {
-    color: #222222;
-    font-family: GoogleSans-Light;
 }
 
 /* paging-bar */

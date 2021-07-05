@@ -38,7 +38,7 @@
     color: #000000;
 }
 
-.field--error:invalid {
+.field-label .field--error {
     border: 1px solid #FF4747;
 }
 
@@ -140,6 +140,7 @@ input[type=number] {
     width: 200px;
     border-radius: 8px;
     color: white;
+    transition: all 1s;
 }
 
 .input-warning i {
@@ -147,7 +148,5 @@ input[type=number] {
     color: #FF4747;
     top: 64px;
     left: 100px;
-    /* width: 24px;
-    height: 24px; */
     font-size: 36px;
 }

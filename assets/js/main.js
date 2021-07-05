@@ -3,13 +3,15 @@ $(document).ready(function () {
 });
 
 /**
- * Ham load Data
+ * Hàm load dữ liệu từ api
+ * Author: NMTuan (05/07/2021)
  */
 async function loadData() {
     await $.ajax({
         url: "http://cukcuk.manhnv.net/v1/Employees",
         method: "get",
-        success: function(response){
+        success: function(response){   
+            console.log(response)
             response.map((item, index) => {
                 // let employeeCode = item.EmployeeCode;
                 // let fullName = item.FullName;
@@ -21,8 +23,7 @@ async function loadData() {
                 // let department = item.DepartmentName;
                 // let salary = item.Salary;
                 // let workStatus = item.WorkStatus;
-                
-                console.log(response)
+
                 let tr = $('<tr></tr>')
                 let theads = $('.grid table tr th')
                 $(theads).each((i, thead) => {
@@ -40,10 +41,12 @@ async function loadData() {
             } )
     }});
     checkBox()
+    clickTr()
 }
 
 /**
- * Ham format td, cell
+ * Hàm format cell của table tùy theo loại dữ liệu
+ * Author: NMTuan (05/07/2021)
  * @param {*} td 
  * @param {*} fieldName 
  * @param {*} index 
@@ -77,7 +80,8 @@ function formatCell(td, fieldName, index) {
 }
 
 /* 
-* ham format gia tri null thanh ""
+* Hàm format các giá trị null
+* Author: NMTuan (05/07/2021)
 */
 function formatNull(value) {
     if (!value) return "";
@@ -85,20 +89,32 @@ function formatNull(value) {
 }
 
 /**
- * Ham format Date
+ * Hàm format các giá trị date
+ * Author: NMTuan (05/07/2021)
  * @param {*} value 
  * @returns 
  */
 function formatDate(value){
     if (!value) return null;
-    let year = value.substring(0,4)
-    let month = value.substring(5,7)
-    let day = value.substring(8,10)
-    return day + "/" + month + "/" + year;
+    // let year = value.substring(0,4)
+    // let month = value.substring(5,7)
+    // let day = value.substring(8,10)
+    // return day + "/" + month + "/" + year;
+    let rs = new Date(value)
+    // rs = rs.toLocaleDateString()
+    let day = rs.getDate()
+    let month = rs.getMonth()
+    let year = rs.getFullYear()
+    if (day < 10) day = '0' + day;
+    if (month < 10) month = '0' + month;
+
+    rs = day + '/' + month + '/' + year
+    return rs;
 }
 
 /**
- * ham format tinh trang lam viec
+ * Hàm format tình trạng làm việc (WorkStatus)
+ * Author: NMTuan (05/07/2021)
  * @param {*} value 
  * @returns 
  */
@@ -109,7 +125,8 @@ function formatWorkStatus(value) {
 }
 
 /**
- * Ham format tien
+ * Hàm format giá trị tiền tệ
+ * Author: NMTuan (05/07/2021)
  * @param {*} value 
  * @returns 
  */
@@ -119,7 +136,8 @@ function formatMoney(value) {
 }
 
 /**
- * Ham format tat ca
+ * Hàm format tổng hợp
+ * Author: NMTuan (05/07/2021)
  * @param {*} value 
  * @param {*} fieldName 
  * @returns 

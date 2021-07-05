@@ -1,19 +1,12 @@
-// $(document).ready(function () {
-//     $(".field-label").focusout(function () {
-//         let input = $(this).find('input');
-//         $(input).addClass('field--error')
-//     });
-// });
-
 $(document).ready(function () {
-    
     validateRequired()
     validateEmail()
 });
 
-/*
-* Ham validate Email
-*/
+/**
+ * Hàm kiểm tra email có đúng định dạng
+ * Author: NMTuan (05/07/2021)
+ */
 function validateEmail() {
     $(".field-label").focusout(function () {
         let input = $(this).find('input[type="email"]');
@@ -28,15 +21,21 @@ function validateEmail() {
 }
 
 /**
- * Ham validate required
-*/
+ * Hàm kiểm tra các trường required
+ * Author: NMTuan (05/07/2021)
+ */
 function validateRequired(){
     $(".field-label").focusout(function () {
         let input = $(this).find('input[required]');
+        let message = $(this).find('.input-warning')
         if (!$(input).val()){
             $(input).addClass('field--error')
+            $(message).find('span').text('Không thể để trống')
+            $(message).css('opacity', 1)
+            setTimeout(() => {$(message).css('opacity',0)}, 2000)
         } else {
             $(input).removeClass('field--error')
+            $(message).css('opacity', 0)
         }
     });
 }
