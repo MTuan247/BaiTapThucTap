@@ -1,11 +1,24 @@
-body {
+/* body {
     background-color: antiquewhite;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-}
+} */
 
+.modal {
+    background-color: antiquewhite;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    z-index: 999;
+}
 
 .info-form {
     background-color: white;
@@ -29,6 +42,7 @@ body {
 .info-form .close {
     position: absolute;
     right: 0px;
+    cursor: pointer;
 }
 
 .form__header {
