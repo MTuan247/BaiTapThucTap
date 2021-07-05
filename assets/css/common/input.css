@@ -76,16 +76,19 @@
 
 .field > .icon-right {
     cursor: pointer;
-    display: none;
+    /* display: none; */
+    opacity: 0;
     height: 16px;
     width: 16px;
     margin-right: 16px;
     background-position: center;
+    z-index: 99;
 }
 
 .field-label > .icon-right {
     cursor: pointer;
-    display: none;
+    /* display: none; */
+    opacity: 0;
     height: 16px;
     width: 16px;
     position: absolute;
@@ -94,7 +97,8 @@
 }
 .field input:focus ~ .icon-right,
 .field-label input:focus ~ .icon-right {
-    display: block;
+    /* display: block; */
+    opacity: 1;
 }
 
 .field-label #salary {

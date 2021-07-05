@@ -1,11 +1,19 @@
 $(document).ready(function () {
+
     $(".field input").focusin(function () {
         $(this).parent().addClass('field--focus')
     });
+
+    clearInput()
+
 });
 
-$(document).ready(function () {
-    $(".field input").focusout(function () {
-        $(this).parent().removeClass('field--focus')
+function clearInput() {
+    $(".field .icon-right").click(function () {
+        $(this).prev().val("");
     });
-});
+
+    $(".field-label .icon-right").click(function () {
+        $(this).prev().val("");
+    });
+}
