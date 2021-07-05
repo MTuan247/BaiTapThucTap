@@ -68,6 +68,10 @@
     margin: 16px;
 }
 
+.grid::-webkit-scrollbar-track {
+    margin-top: 48px;
+}
+
 .grid table {
     width: 100%;
     table-layout: fixed;

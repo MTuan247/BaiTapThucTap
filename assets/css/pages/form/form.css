@@ -7,20 +7,20 @@
 } */
 
 .modal {
-    background-color: antiquewhite;
+    background-color: rgba(0, 0, 0, 0.8);
     display: none;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    padding: 50px 0;
+    overflow: auto;
     z-index: 999;
 }
 
 .info-form {
+    margin: auto;
     background-color: white;
     overflow: auto;
     width: 845px;

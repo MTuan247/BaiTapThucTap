@@ -42,6 +42,13 @@ async function loadData() {
     checkBox()
 }
 
+/**
+ * Ham format td, cell
+ * @param {*} td 
+ * @param {*} fieldName 
+ * @param {*} index 
+ * @returns 
+ */
 function formatCell(td, fieldName, index) {
 
     let cell = td

@@ -44,7 +44,6 @@ body {
   /* Track */
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
-    margin-top: 48px;
 }
   
   /* Handle */
