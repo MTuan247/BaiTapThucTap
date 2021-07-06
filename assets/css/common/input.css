@@ -127,12 +127,13 @@ input[type=number] {
 /* CSS Warning */
 
 .input-warning {
-    opacity: 0;
+    /* opacity: 0; */
+    display: none;
     font-family: GoogleSans-Light;
     position: absolute;
     top: -62px;
     left: 85px;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
     background-color: #FF4747;

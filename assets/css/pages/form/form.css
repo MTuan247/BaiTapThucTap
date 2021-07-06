@@ -51,6 +51,21 @@
     display: flex;
 }
 
+.info-form .content__header {
+    position: relative;
+    text-transform: uppercase;
+}
+
+.info-form .content__header::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background-color: #019160;
+}
+
 /* 
 *   CSS form left - avatar 
 */

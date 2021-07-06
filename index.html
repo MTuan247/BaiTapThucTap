@@ -41,6 +41,10 @@
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
                             </div>
                             <div class="field-label">
+                                <div class="input-warning">
+                                    <span>Định dạng không đúng</span>
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
                                 <div class="label">Họ và tên (<span style="color: red;">*</span>)</div>
                                 <input type="text" name="" id="" required>
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
@@ -61,6 +65,10 @@
                                 </div>
                             </div>
                             <div class="field-label">
+                                <div class="input-warning">
+                                    <span>Định dạng không đúng</span>
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
                                 <div class="label">Số CMTND/ Căn cước (<span style="color: red;">*</span>)</div>
                                 <input type="number" name="" id="" required>
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
@@ -77,11 +85,19 @@
                         </div>
                         <div class="form__input">
                             <div class="field-label">
+                                <div class="input-warning">
+                                    <span>Định dạng không đúng</span>
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
                                 <div class="label">Email (<span style="color: red;">*</span>)</div>
                                 <input type="email" name="" id="" required>
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
                             </div>
                             <div class="field-label">
+                                <div class="input-warning">
+                                    <span>Định dạng không đúng</span>
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
                                 <div class="label">Số điện thoại (<span style="color: red;">*</span>)</div>
                                 <input type="tel" name="" id="" pattern="^[0-9\-\+]{9,15}$" required>
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
@@ -123,7 +139,7 @@
     
                             <div class="field-label">
                                 <div class="label">Mức lương cơ bản</div>
-                                <input type="number" id="salary" name="" id="">
+                                <input type="text" id="salary" maxlength="15" name="" id="">
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
                             </div>
     
@@ -234,20 +250,23 @@
         </div>
         <div class="grid">
             <table cellspacing=0 >
-                <tr>
-                    <th fieldName="Checkbox" style="width: 50px;"></th>
-                    <th fieldName="Index" style="width: 50px;">#</th>
-                    <th fieldName="EmployeeCode" style="width: 120px;">Mã nhân viên</th>
-                    <th fieldName="FullName" style="width: 200px;">Họ tên</th>
-                    <th fieldName="GenderName" style="width: 100px;">Giới tính</th>
-                    <th fieldName="DateOfBirth" style="width: 150px; text-align: center;">Ngày sinh</th>
-                    <th fieldName="PhoneNumber" style="width: 150px;">Điện thoại</th>
-                    <th fieldName="Email" style="width: 200px;">Email</th>
-                    <th fieldName="PositionName" style="width: 150px;">Vị trí/Chức vụ</th>
-                    <th fieldName="DepartmentName" style="width: 180px;">Bộ phận/Phòng ban</th>
-                    <th fieldName="Salary" style="width: 180px; text-align: right; padding-right: 20px;">Mức lương cơ bản</th>
-                    <th fieldName="WorkStatus" style="width: 200px;">Tình trạng công việc</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th fieldName="Checkbox" style="width: 50px;"></th>
+                        <th fieldName="Index" style="width: 50px;">#</th>
+                        <th fieldName="EmployeeCode" style="width: 120px;">Mã nhân viên</th>
+                        <th fieldName="FullName" style="width: 200px;">Họ tên</th>
+                        <th fieldName="GenderName" style="width: 100px;">Giới tính</th>
+                        <th fieldName="DateOfBirth" style="width: 150px; text-align: center;">Ngày sinh</th>
+                        <th fieldName="PhoneNumber" style="width: 150px;">Điện thoại</th>
+                        <th fieldName="Email" style="width: 200px;">Email</th>
+                        <th fieldName="PositionName" style="width: 150px;">Vị trí/Chức vụ</th>
+                        <th fieldName="DepartmentName" style="width: 180px;">Bộ phận/Phòng ban</th>
+                        <th fieldName="Salary" style="width: 180px; text-align: right; padding-right: 20px;">Mức lương cơ bản</th>
+                        <th fieldName="WorkStatus" style="width: 200px;">Tình trạng công việc</th>
+                    </tr> 
+                </thead>
+                <tbody></tbody>
                 <!-- <tr>
                     <td class="check-box" >
                         <div class="custom-checkbox">

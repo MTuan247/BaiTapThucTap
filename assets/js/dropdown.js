@@ -1,37 +1,80 @@
-
 // Xử lý các affect của dropdown
-
-
 $(document).ready(function () {
-    $(".dropdown").click(function () {
-        toggleFade(this)
-    });
-});
+    new Dropdown()
+})
 
+class Dropdown {
+    constructor() {
+        this.initEvent()
+    }
 
-$(document).ready(function () {
-    $(".dropdown").keypress(function (e) {
-        if (e.code == "Enter") {
-            toggleFade(this)
+    initEvent() {
+        let me = this;
+        $(".dropdown").click(function () {
+            me.toggleFade(this)
+        });
+        $(".dropdown").keypress(function (e) {
+            if (e.code == "Enter") {
+                me.toggleFade(this)
+            }
+        });
+        $(".dropdown .dropdown-item").click(function () {
+            me.selectItem(this)
+        });
+        $(".dropdown .dropdown-item").keypress(function (e) {
+            if (e.code == "Enter") {
+                me.selectItem(this)
+                $(this).closest('dropdown').focus()
+            }
+        });
+    }
+
+    /**
+     * Method hiện collapse dropdown
+     * @param {element} el 
+     */
+    toggleFade(el) {
+        $(el).find('.collapse').fadeToggle()
+        $(el).find('.icon-right').toggleClass('rotate')
+        this.detectSelectDropdownItem()
+    }
+
+    /**
+     * Method lựa chọn dropdown item được chọn
+     * @param {element} el 
+     */
+    selectItem(el) {
+        let itemSelected = $(el).text();
+        $(el).parent().parent().find('.value').text(itemSelected)
+    }
+
+    /**
+     * Method xác định dropdown item đã được chọn
+     */
+    detectSelectDropdownItem() {
+        let dropdown = $(".dropdown");
+        for (let i = 0; i < dropdown.length; i++) {
+            let value = $(dropdown[i]).find('.value');
+            let items = $(dropdown[i]).find('.dropdown-item');
+            for (let j = 0; j < items.length; j++) {
+                let item = items[j]
+                if ($(item).text() == $(value).text()) {
+                    $(item).addClass('dropdown-item--selected')
+                } else {
+                    $(item).removeClass('dropdown-item--selected')
+                }
+            }
+
         }
-    });
-});
+    }
+}
 
-$(document).ready(function () {
-    $(".dropdown .dropdown-item").click(function () {
-        selectItem(this)
-    });
-});
 
-$(document).ready(function () {
-    $(".dropdown .dropdown-item").keypress(function (e) {
-        if (e.code == "Enter") {
-            selectItem(this)
-            $(this).closest('dropdown').focus()
-        }
-    });
-});
-
+/**
+ * Hàm ẩn dropdown khi click ra ngoài
+ * Author: NMTuan (06/07/2021)
+ * @param {event} event 
+ */
 window.onclick = function (event) {
     if (!event.target.matches('.dropdown') & !event.target.matches('.value') & !event.target.matches('.icon-right')) {
         var dropdowns = document.querySelectorAll('.dropdown .collapse')
@@ -41,49 +84,8 @@ window.onclick = function (event) {
             var openDropdown = dropdowns[i];
             if ($(openDropdown).css('display') == 'block') {
                 $(icon).removeClass('rotate')
-                $(openDropdown).css('display', "none");
+                $(openDropdown).fadeOut();
             }
         }
-    }
-}
-
-
-/* 
-    Hàm ẩn hiện collapse trong dropdown
-
-*/
-function toggleFade(el) {
-    $(el).find('.collapse').fadeToggle()
-    $(el).find('.icon-right').toggleClass('rotate')
-    detectSelectDropdownItem()
-}
-
-/* 
-    Hàm chọn item trong dropdown
-
-*/
-function selectItem(el) {
-    let itemSelected = $(el).text();
-    $(el).parent().parent().find('.value').text(itemSelected)
-}
-
-/* 
-    Hàm xác định dropdown-item đã được chọn
-
-*/
-function detectSelectDropdownItem() {
-    let dropdown = $(".dropdown");
-    for (let i = 0; i < dropdown.length; i++) {
-        let value = $(dropdown[i]).find('.value');
-        let items = $(dropdown[i]).find('.dropdown-item');
-        for (let j = 0; j < items.length; j++) {
-            let item = items[j]
-            if ($(item).text() == $(value).text()) {
-                $(item).addClass('dropdown-item--selected')
-            } else {
-                $(item).removeClass('dropdown-item--selected')
-            }
-        }
-
     }
 }

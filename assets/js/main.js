@@ -1,47 +1,96 @@
 $(document).ready(function () {
-    loadData()
+    new Main()
 });
 
-/**
- * Hàm load dữ liệu từ api
- * Author: NMTuan (05/07/2021)
- */
-async function loadData() {
-    await $.ajax({
-        url: "http://cukcuk.manhnv.net/v1/Employees",
-        method: "get",
-        success: function(response){   
-            console.log(response)
-            response.map((item, index) => {
-                // let employeeCode = item.EmployeeCode;
-                // let fullName = item.FullName;
-                // let gender = item.GenderName;
-                // let birthday = item.DateOfBirth;
-                // let phone = item.PhoneNumber;
-                // let email = item.Email;
-                // let positionName = item.PositionName;
-                // let department = item.DepartmentName;
-                // let salary = item.Salary;
-                // let workStatus = item.WorkStatus;
+class Main {
+    constructor() {
+        this.loadData()
+        this.initEvents()
+        this.data = []
+    }
 
-                let tr = $('<tr></tr>')
-                let theads = $('.grid table tr th')
-                $(theads).each((i, thead) => {
-                    let td = $(`<td></td>`)
-                    let fieldName = $(thead).attr('fieldName');
-                    let value = item[fieldName]
-                    value = formatData(value, fieldName)
-                    td = formatCell(td, fieldName, index)
-                    td.append(value)
-                    tr.append(td)
-                })
-            
-    
-                $(".grid table").append(tr)
-            } )
-    }});
-    checkBox()
-    clickTr()
+    initEvents() {
+        let me = this
+        $('.grid thead th').click(function(){
+            let fieldName = $(this).attr('fieldName')
+            me.sortData(fieldName)
+            me.bindData(me.data)
+        })
+    }
+
+    /**
+    * Hàm load dữ liệu từ api
+    * Author: NMTuan (05/07/2021)
+    */
+    async loadData() {
+        let me = this;
+        try {
+            await $.ajax({
+                url: "http://cukcuk.manhnv.net/v1/Employees",
+                method: "get",
+                success: function (response) {
+                    console.log(response)
+                    me.data = response
+                    me.bindData(me.data)
+                }
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    /**
+     * Hàm bind data
+     * @param {response} response 
+     */
+    bindData(response) {
+
+        $(".grid table tbody").empty()
+
+        response.map((item, index) => {
+
+            let tr = $('<tr></tr>')
+            let employeeId = item.EmployeeId
+            tr = $(tr).attr('employeeId', employeeId)
+            let theads = $('.grid table tr th')
+            $(theads).each((i, thead) => {
+                let td = $(`<td></td>`)
+                let fieldName = $(thead).attr('fieldName');
+                let value = item[fieldName]
+                value = formatData(value, fieldName)
+                td = formatCell(td, fieldName, index)
+                td.append(value)
+                tr.append(td)
+            })
+
+            $(".grid table tbody").append(tr)
+        })
+    }
+
+    /**
+     * Hàm sắp xếp dữ liệu
+     * @param {fieldName} fieldName 
+     */
+    sortData(fieldName) {
+        this.data.sort(function(a,b){
+            if(a[fieldName] < b[fieldName]) return -1;
+            if(a[fieldName] > b[fieldName]) return 1;
+            if (a[fieldName] == null) return -1;
+            return 0;
+        })
+    }
+
+    createData() {
+
+    }
+
+    updateData() {
+
+    }
+
+    deleteData() {
+
+    }
 }
 
 /**
@@ -94,7 +143,7 @@ function formatNull(value) {
  * @param {*} value 
  * @returns 
  */
-function formatDate(value){
+function formatDate(value) {
     if (!value) return null;
     // let year = value.substring(0,4)
     // let month = value.substring(5,7)
@@ -119,7 +168,7 @@ function formatDate(value){
  * @returns 
  */
 function formatWorkStatus(value) {
-    if(value == 1) return "Đang làm việc"
+    if (value == 1) return "Đang làm việc"
     else if (value == 0) return "Đã nghỉ việc"
     return null;
 }
@@ -144,13 +193,13 @@ function formatMoney(value) {
  */
 function formatData(value, fieldName) {
     let rs = value
-    if(fieldName == "WorkStatus") {
+    if (fieldName == "WorkStatus") {
         rs = formatWorkStatus(rs)
     }
-    if(fieldName == "Salary") {
+    if (fieldName == "Salary") {
         rs = formatMoney(rs)
     }
-    if(fieldName == "DateOfBirth") {
+    if (fieldName == "DateOfBirth") {
         rs = formatDate(rs)
     }
     rs = formatNull(rs)
