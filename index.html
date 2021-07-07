@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="modal">
-        <form class="info-form">
+        <div class="info-form">
             <div class="div-icon close" style="background-image: url(./assets/icon/x.svg);"></div>
             <div class="form__header">
                 <h1 class="text-title">Thông tin nhân viên</h1>
@@ -68,9 +68,9 @@
                                     <input type="text" class="value combo-box__text" value="" />
                                     <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
                                     <div class="collapse">
-                                        <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Không xác định</div>
-                                        <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Nam</div>
-                                        <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Nữ</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>Không xác định</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>Nam</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>Nữ</div>
                                     </div>
                                 </div>
                             </div>
@@ -117,50 +117,54 @@
                     <div class="area">
                         <div class="content__header">B.Thông tin công việc</div>
                         <div class="form__input">
-                            <div class="field-label">
+                            <div fieldName="PositionName" class="field-label">
                                 <div class="label">Vị trí</div>
-                                <div class="dropdown" tabindex="0">
-                                    <div class="value dropdown-text">Tất cả vị trí</div>
-                                    <i class="fa fa-caret-down icon-right" aria-hidden="true"></i>
+                                <div class="combo-box" tabindex="0">
+                                    <input type="text" class="value combo-box__text" value="" />
+                                    <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
                                     <div class="collapse">
-                                        <div class="dropdown-item">Tất cả vị trí</div>
-                                        <div class="dropdown-item">Tổng giám đốc</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>Phòng Nhân sự</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>Phòng Nghiên cứu</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>Phòng Tài chính</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>Phòng Đào tạo</div>
                                     </div>
                                 </div>
                             </div>
     
-                            <div class="field-label">
+                            <div fieldName="DepartmentName" class="field-label">
                                 <div class="label">Phòng ban</div>
-                                <div class="dropdown" tabindex="0">
-                                    <div class="value dropdown-text">Tất cả phòng ban</div>
-                                    <i class="fa fa-caret-down icon-right" aria-hidden="true"></i>
+                                <div class="combo-box" tabindex="0">
+                                    <input type="text" class="value combo-box__text" value="" />
+                                    <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
                                     <div class="collapse">
-                                        <div class="dropdown-item">Tất cả phòng ban</div>
-                                        <div class="dropdown-item">Phòng nhân sự</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>Phòng Nhân sự</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>Phòng Công nghệ</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>Phòng Marketting</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>Phòng đào tạo</div>
                                     </div>
                                 </div>
                             </div>
     
-                            <div class="field-label">
+                            <div fieldName="PersonalTaxCode" class="field-label">
                                 <div class="label">Mã số thuế cá nhân</div>
-                                <input type="number" name="" id="">
+                                <input class="field__input" type="number" name="" id="">
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
                             </div>
     
-                            <div class="field-label">
+                            <div fieldName="Salary" fieldType="Money" class="field-label">
                                 <div class="label">Mức lương cơ bản</div>
-                                <input type="text" id="salary" maxlength="15" name="" id="">
+                                <input onkeypress="return isNumber(event)" type="text" id="salary" maxlength="15" name="" id="">
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
                             </div>
     
-                            <div class="field-label">
+                            <div fieldName="JoinDate" fieldType="Date" class="field-label">
                                 <div class="label">Ngày gia nhập công ty</div>
-                                <input type="date" name="" id="">
+                                <input class="field__input" type="date" name="" id="">
                             </div>
     
-                            <div class="field-label">
+                            <div fieldName="WorkStatus" class="field-label">
                                 <div class="label">Tình trạng công việc</div>
-                                <input type="number" name="" id="">
+                                <input class="field__input" type="number" name="" id="">
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
                             </div>
     
@@ -174,7 +178,7 @@
                 <input id="submit" type="submit" class="btn-icon" value="Lưu" title="Lưu">
                 <!-- <div class="btn-icon">Lưu</div> -->
             </div>
-        </form>
+        </div>
     </div>
     <div class="navbar">
         <div class="logo-site">
@@ -270,9 +274,9 @@
                         <th fieldName="DateOfBirth" style="width: 150px; text-align: center;">Ngày sinh</th>
                         <th fieldName="PhoneNumber" style="width: 150px;">Điện thoại</th>
                         <th fieldName="Email" style="width: 200px;">Email</th>
+                        <th fieldName="Salary" style="width: 180px; text-align: right; padding-right: 20px;">Mức lương cơ bản</th>
                         <th fieldName="PositionName" style="width: 150px;">Vị trí/Chức vụ</th>
                         <th fieldName="DepartmentName" style="width: 180px;">Bộ phận/Phòng ban</th>
-                        <th fieldName="Salary" style="width: 180px; text-align: right; padding-right: 20px;">Mức lương cơ bản</th>
                         <th fieldName="WorkStatus" style="width: 200px;">Tình trạng công việc</th>
                     </tr> 
                 </thead>
@@ -318,6 +322,8 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./assets/js/common/format.js"></script>
+    <script src="./assets/js/common/modal.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/combo-box.js"></script>
     <script src="./assets/js/dropdown.js"></script>

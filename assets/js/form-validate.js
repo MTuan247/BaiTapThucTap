@@ -67,8 +67,8 @@ function validateMessage(el) {
         $(inputEmail).addClass('field--error')
         return "Email k đúng đinh dạng"
     } else {
-        $(inputEmail).removeClass('field--focus')
-        $(inputRequired).removeClass('field--focus')
+        $(inputEmail).removeClass('field--error')
+        $(inputRequired).removeClass('field--error')
         return ""
     }
 }
@@ -97,6 +97,5 @@ function validateInput(el) {
 function fadeInMessage(el, message) {
     $(el).find('span').text(message)
     $(el).css('display', 'flex')
-    // setTimeout(() => {$(el).fadeOut()}, 2000)
     $(el).fadeOut(3000)
 }

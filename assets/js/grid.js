@@ -29,15 +29,21 @@ function clickTr(el) {
 function initEvents() {
     $("table").on('change', '.check-box input', function () {
         checkBox(this)
-    }); 
+    })
+    
     $('.filter-bar .refresh').click(function (){
-        new Main()
+        main.loadData()
     })
 
-    $("table").on('click','tr',function(){
+    $("table").on('click','tbody tr',function(){
         modalFadeIn()
         let employeeId = $(this).attr('employeeId')
         main.loadDataById(employeeId)
+    })
+
+    $('#add-employee').click(() => {
+        modalFadeIn()
+        $('.modal form').trigger('reset')
     })
 }
 

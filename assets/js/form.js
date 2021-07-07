@@ -8,18 +8,17 @@ $(document).ready(function () {
  * Author: NMTuan (05/07/2021)
  */
 function toggleModal() {
-    $('#add-employee').click(() => {
-        // $('.modal').css('display','block')
-        modalFadeIn()
-    })
 
     $('.info-form .close').click(() => {
-        // $('.modal').css('display','none')
         $('.modal').fadeOut()
     })
 
     $('.info-form .form__footer #cancel').click(() => {
         $('.modal').fadeOut()
+    })
+
+    $('.info-form #submit').click(() => {
+        submit()
     })
 }
 
@@ -35,13 +34,62 @@ function formatMoneyOnChange(){
         value = BigInt(value).toLocaleString('it-IT');
         $(this).val(value)
     })
+
 }
 
-/**
- * Hàm hiện modal
- * Author: NMTuan (07/07/2021)
- */
-function modalFadeIn() {
-    $('.modal').fadeIn()
-    $('.modal .info-form input').first().focus()
+function isNumber(e) {
+    var charCode = (e.which) ? (e.which) : (e.keyCode)
+    if ( charCode > 31 && (charCode > 57 || charCode < 48)) {
+        return false;
+    }
+    return true;
+}
+
+function submit() {
+    let data  = {
+        "createdDate": "",
+        "createdBy": "",
+        "modifiedDate": "",
+        "modifiedBy": "",
+        "employeeId": "",
+        "employeeCode": "",
+        "firstName": "",
+        "lastName": "",
+        "fullName": "",
+        "gender": 0,
+        "dateOfBirth": "",
+        "phoneNumber": "",
+        "email": "",
+        "address": "",
+        "identityNumber": "",
+        "identityDate": "",
+        "identityPlace": "",
+        "joinDate": "",
+        "martialStatus": 0,
+        "educationalBackground": 0,
+        "qualificationId": "",
+        "departmentId": "",
+        "positionId": "",
+        "workStatus": 0,
+        "personalTaxCode": "",
+        "salary": 0,
+        "positionCode": "",
+        "positionName": "",
+        "departmentCode": "",
+        "departmentName": "",
+        "qualificationName": ""
+      }
+    $('.field-label').each((index, item) => {
+        let fieldName = $(item).attr('fieldName')
+        let fieldType = $(item).attr('fieldType')
+        let value = $(item).find('input').val()
+        if(fieldType == 'Date') value = new Date(value)
+        if(fieldType == 'Money') {
+            value = value.replaceAll('.','')
+            value = parseInt(value)
+        }
+        data[fieldName] = value;
+    })
+    console.log(data)
+    main.addData(data)
 }
