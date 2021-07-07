@@ -10,7 +10,7 @@ $(document).ready(function () {
 function toggleModal() {
     $('#add-employee').click(() => {
         // $('.modal').css('display','block')
-        $('.modal').fadeIn()
+        modalFadeIn()
     })
 
     $('.info-form .close').click(() => {
@@ -35,4 +35,13 @@ function formatMoneyOnChange(){
         value = BigInt(value).toLocaleString('it-IT');
         $(this).val(value)
     })
+}
+
+/**
+ * Hàm hiện modal
+ * Author: NMTuan (07/07/2021)
+ */
+function modalFadeIn() {
+    $('.modal').fadeIn()
+    $('.modal .info-form input').first().focus()
 }

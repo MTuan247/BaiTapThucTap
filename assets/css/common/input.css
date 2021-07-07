@@ -60,6 +60,10 @@
     padding-right: 16px;
 }
 
+.field-label .field__input {
+    padding-left: 16px;
+}
+
 
 .field-label input::placeholder {
     font-size: 11px;
@@ -68,7 +72,6 @@
 .field-label input:focus {
     border: 1px solid #019160;
     border-radius: 4px;
-    height: 40px;
     outline: none;
     font-size: 13px;
     color: #000000;
@@ -87,19 +90,19 @@
 
 .field-label > .icon-right {
     cursor: pointer;
-    /* display: none; */
-    opacity: 0;
+    display: none;
+    /* opacity: 0; */
     height: 16px;
     width: 16px;
     position: absolute;
     right: 16px;
     top: 32px;
 }
-.field input:focus ~ .icon-right,
+
+/* .field input:focus ~ .icon-right,
 .field-label input:focus ~ .icon-right {
-    /* display: block; */
     opacity: 1;
-}
+} */
 
 .field-label #salary {
     text-align: right;

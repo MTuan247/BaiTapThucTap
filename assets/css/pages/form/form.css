@@ -105,8 +105,16 @@
     width: 300px;
 }
 
-.info-form .form__body .area .form__input .field-label input {
+.info-form .form__body .area .form__input .field-label input:not(.combo-box__text) {
     width: 300px;
+}
+
+.info-form .form__body .area .form__input .field-label .combo-box__text {
+    width: 270px;
+}
+
+.info-form .form__body .area .form__input .field-label .combo-box__icon {
+    display: block;
 }
 
 .info-form .form__body .area .content__header {

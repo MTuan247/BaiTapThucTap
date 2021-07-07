@@ -11,20 +11,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/components/input-warning.css">
-    <link rel="stylesheet" href="./assets/css/common/dropdown.css">
+    <link rel="stylesheet" href="./assets/css/common/combo-box.css">
     <style>
-        .combo-box {
+        .field-label {
             width: 300px;
             margin: auto;
         }
 
-        .combo-box .dropdown-text {
+        .combo-box .combo-box__text {
             border: none;
             width: 100%;
             height: 100%;
         }
 
-        .combo-box .dropdown-text:focus {
+        .combo-box .combo-box__text:focus {
             outline: none;
         }
     </style>
@@ -44,99 +44,40 @@
         <i class="fa fa-caret-down" aria-hidden="true"></i>
     </div>
 
-    <div class="field-label combo-box">
+    <div class="field-label">
         <div class="label">Vị trí</div>
-        <div class="dropdown" tabindex="0">
-            <input class="value dropdown-text" value="" />
+        <div class="combo-box" tabindex="0">
+            <input type="text" class="value combo-box__text" value="" />
+            <i class="fa fa-angle-down icon-right" aria-hidden="true"></i>
+            <div class="collapse">
+                <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Tất cả vị trí</div>
+                <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Tổng giám đốc</div>
+                <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Google</div>
+                <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Firefox</div>
+                <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Hiiiiiiiii</div>
+                <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Heloooooooo</div>
+            </div>
+        </div>
+    </div>
+    <div class="field-label">
+        <div class="label">Vị trí</div>
+        <div class="combo-box" tabindex="0">
+            <input type="text" class="value combo-box__text" value="" />
             <i class="fa fa-caret-down icon-right" aria-hidden="true"></i>
             <div class="collapse">
-                <div class="dropdown-item">Tất cả vị trí</div>
-                <div class="dropdown-item">Tổng giám đốc</div>
-                <div class="dropdown-item">Google</div>
-                <div class="dropdown-item">Firefox</div>
-                <div class="dropdown-item">Hiiiiiiiii</div>
-                <div class="dropdown-item">Heloooooooo</div>
+                <div class="combo-box__item">Tất cả vị trí</div>
+                <div class="combo-box__item">Tổng giám đốc</div>
+                <div class="combo-box__item">Google</div>
+                <div class="combo-box__item">Firefox</div>
+                <div class="combo-box__item">Hiiiiiiiii</div>
+                <div class="combo-box__item">Heloooooooo</div>
             </div>
         </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./assets/js/dropdown.js"></script>
+    <script src="./assets/js/combo-box.js"></script>
     <script>
-        $(".dropdown .dropdown-item").click(function () {
-            selectItem(this)
-        });
-
-        $(".dropdown input").on('input', function () {
-            detectItemMatched()
-        })
-
-        $(".dropdown input").focus(function(){
-            $(this).find('.collase').show()
-        })
-
-        function detectItemMatched() {
-            let items = $(".dropdown .dropdown-item")
-            let value = $(".dropdown .value").val()
-            value = removeAccents(value)
-            value = value.toLowerCase()
-            $(items).each((each, item) => {
-                let text = $(item).text()
-                text = removeAccents(text)
-                text = text.toLowerCase()
-                if (text.includes(value)) {
-                    $(item).show()
-                } else {
-                    $(item).hide()
-                }
-            })
-        }
-
-        function detectSelectDropdownItem() {
-            let dropdown = $(".dropdown");
-            for (let i = 0; i < dropdown.length; i++) {
-                let value = $(dropdown[i]).find('.value');
-                let items = $(dropdown[i]).find('.dropdown-item');
-                for (let j = 0; j < items.length; j++) {
-                    let item = items[j]
-                    if ($(item).text() == $(value).text()) {
-                        $(item).addClass('dropdown-item--selected')
-                    } else {
-                        $(item).removeClass('dropdown-item--selected')
-                    }
-                }
-
-            }
-        }
-
-        function removeAccents(str) {
-            var AccentsMap = [
-                "aàảãáạăằẳẵắặâầẩẫấậ",
-                "AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬ",
-                "dđ", "DĐ",
-                "eèẻẽéẹêềểễếệ",
-                "EÈẺẼÉẸÊỀỂỄẾỆ",
-                "iìỉĩíị",
-                "IÌỈĨÍỊ",
-                "oòỏõóọôồổỗốộơờởỡớợ",
-                "OÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢ",
-                "uùủũúụưừửữứự",
-                "UÙỦŨÚỤƯỪỬỮỨỰ",
-                "yỳỷỹýỵ",
-                "YỲỶỸÝỴ"
-            ];
-            for (var i = 0; i < AccentsMap.length; i++) {
-                var re = new RegExp('[' + AccentsMap[i].substr(1) + ']', 'g');
-                var char = AccentsMap[i][0];
-                str = str.replace(re, char);
-            }
-            return str;
-        }
-
-        function selectItem(el) {
-            let itemSelected = $(el).text();
-            $(el).parent().parent().find('.value').val(itemSelected)
-        }
     </script>
 </body>
 

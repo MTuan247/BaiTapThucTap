@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./assets/css/common/button.css">
     <link rel="stylesheet" href="./assets/css/common/text.css">
     <link rel="stylesheet" href="./assets/css/common/dropdown.css">
+    <link rel="stylesheet" href="./assets/css/common/combo-box.css">
     <link rel="stylesheet" href="./assets/css/common/input.css">
     <link rel="stylesheet" href="./assets/css/pages/form/form.css">
 </head>
@@ -31,75 +32,84 @@
                     <div class="area">
                         <div class="content__header">A.Thông tin chung</div>
                         <div class="form__input">
-                            <div class="field-label">
+                            <div fieldName="EmployeeCode" class="field-label">
                                 <div class="input-warning">
                                     <span>Định dạng không đúng</span>
                                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>
                                 <div class="label">Mã nhân viên (<span style="color: red;">*</span>)</div>
-                                <input type="text" name="" id="" required>
+                                <input class="field__input" type="text" name="" id="" required>
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
                             </div>
-                            <div class="field-label">
+                            <div fieldName="FullName" class="field-label">
                                 <div class="input-warning">
                                     <span>Định dạng không đúng</span>
                                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>
                                 <div class="label">Họ và tên (<span style="color: red;">*</span>)</div>
-                                <input type="text" name="" id="" required>
+                                <input class="field__input" type="text" name="" id="" required>
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
                             </div>
-                            <div class="field-label">
+                            <div fieldName="DateOfBirth" fieldType="Date" class="field-label">
                                 <div class="label">Ngày sinh</div>
-                                <input type="date" name="" id="">
+                                <input class="field__input" type="date" name="" id="">
                             </div>
-                            <div class="field-label">
+                            <div fieldName="GenderName" class="field-label">
                                 <div class="label">Giới tính</div>
-                                <div class="dropdown" tabindex="0">
+                                <!-- <div class="dropdown" tabindex="0">
                                     <div class="value dropdown-text"></div>
                                     <i class="fa fa-caret-down icon-right" aria-hidden="true"></i>
                                     <div class="collapse">
                                         <div class="dropdown-item">Nam</div>
                                         <div class="dropdown-item">Nữ</div>
                                     </div>
+                                </div> -->
+                                <div class="combo-box" tabindex="0">
+                                    <input type="text" class="value combo-box__text" value="" />
+                                    <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
+                                    <div class="collapse">
+                                        <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Không xác định</div>
+                                        <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Nam</div>
+                                        <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Nữ</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="field-label">
+                            <div fieldName="IdentityNumber" class="field-label">
                                 <div class="input-warning">
                                     <span>Định dạng không đúng</span>
                                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>
                                 <div class="label">Số CMTND/ Căn cước (<span style="color: red;">*</span>)</div>
-                                <input type="number" name="" id="" required>
+                                <input class="field__input" type="number" name="" id="" required>
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
                             </div>
-                            <div class="field-label">
+                            <div fieldName="IdentityDate" fieldType="Date" class="field-label">
                                 <div class="label">Ngày cấp</div>
-                                <input type="date" name="" id="">
+                                <input class="field__input" type="date" name="" id="">
                             </div>
-                            <div class="field-label">
+                            <div fieldName="IdentityPlace" class="field-label">
                                 <div class="label">Nơi cấp</div>
-                                <input type="text" name="" id="">
+                                <input class="field__input" type="text" name="" id="">
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
                             </div>
                         </div>
                         <div class="form__input">
-                            <div class="field-label">
+                            <div fieldName="Email" class="field-label">
                                 <div class="input-warning">
                                     <span>Định dạng không đúng</span>
                                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>
                                 <div class="label">Email (<span style="color: red;">*</span>)</div>
-                                <input type="email" name="" id="" required>
+                                <input class="field__input" type="email" name="" id="" required>
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
                             </div>
-                            <div class="field-label">
+                            <div fieldName="PhoneNumber" class="field-label">
                                 <div class="input-warning">
                                     <span>Định dạng không đúng</span>
                                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>
                                 <div class="label">Số điện thoại (<span style="color: red;">*</span>)</div>
-                                <input type="tel" name="" id="" pattern="^[0-9\-\+]{9,15}$" required>
+                                <input class="field__input" type="tel" name="" id="" pattern="^[0-9\-\+]{9,15}$" required>
                                 <i class="fa fa-times icon-right" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -309,6 +319,7 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/combo-box.js"></script>
     <script src="./assets/js/dropdown.js"></script>
     <script src="./assets/js/input.js"></script>
     <script src="./assets/js/grid.js"></script>

@@ -34,6 +34,7 @@ class Dropdown {
      * @param {element} el 
      */
     toggleFade(el) {
+        $('.dropdown').not(el).find('.collapse').fadeOut()
         $(el).find('.collapse').fadeToggle()
         $(el).find('.icon-right').toggleClass('rotate')
         this.detectSelectDropdownItem()
@@ -67,6 +68,7 @@ class Dropdown {
 
         }
     }
+
 }
 
 

@@ -1,10 +1,13 @@
+let main;
+
 $(document).ready(function () {
-    new Main()
+    main = new Main()
+    main.loadData()
 });
 
 class Main {
     constructor() {
-        this.loadData()
+        // this.loadData()
         this.initEvents()
         this.data = []
     }
@@ -91,6 +94,35 @@ class Main {
     deleteData() {
 
     }
+
+    loadDataById(id) {
+        let me = this;
+        try {
+            $.ajax({
+                url: "http://cukcuk.manhnv.net/v1/Employees/" + id,
+                method: "get",
+                success: function (response) {
+                    console.log(response)
+                    $('.info-form .field-label').each((index, item) => {
+                        let fieldName = $(item).attr('fieldName')
+                        let fieldType = $(item).attr('fieldType')
+                        let value =response[fieldName]
+                        if (fieldType == 'Date') {
+                            value = formatDateInput(value)
+                        }
+                        
+                        $(item).find('input').val(value)
+                    })
+                }
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    bindDataToForm() {
+
+    }
 }
 
 /**
@@ -158,6 +190,25 @@ function formatDate(value) {
     if (month < 10) month = '0' + month;
 
     rs = day + '/' + month + '/' + year
+    return rs;
+}
+
+/**
+ * Hàm format date cho input type date
+ * Author: NMTuan (07/07/2021)
+ * @param {*} value 
+ * @returns 
+ */
+function formatDateInput(value) {
+    if (!value) return null;
+    let rs = new Date(value)
+    let day = rs.getDate()
+    let month = rs.getMonth()
+    let year = rs.getFullYear()
+    if (day < 10) day = '0' + day;
+    if (month < 10) month = '0' + month;
+
+    rs = year + '-' + month + '-' + day
     return rs;
 }
 

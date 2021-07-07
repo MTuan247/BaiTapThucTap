@@ -1,5 +1,6 @@
 $(document).ready(function () {
     focusHandle()
+    inputHandle()
     clearInput()
 });
 
@@ -15,6 +16,13 @@ function focusHandle() {
     $(".field input").focusout(function () {
         $(this).parent().removeClass('field--focus')
     });
+
+}
+
+function inputHandle() {
+    $('.field-label input').on('input', function(){
+        showClearIcon(this)
+    })
 }
 
 /**
@@ -25,9 +33,23 @@ function focusHandle() {
 function clearInput() {
     $(".field .icon-right").click(function () {
         $(this).prev().val("");
+        $(this).siblings('input').trigger('input')
     });
 
     $(".field-label .icon-right").click(function () {
         $(this).prev().val("");
+        $(this).siblings('input').trigger('input')        
     });
+}
+
+/**
+ * Hàm xử lí ẩn hiện clear button
+ * @param {element input} item 
+ */
+function showClearIcon(item) {
+    if($(item).val() != ""){
+        $(item).siblings('.icon-right').show()
+    } else {
+        $(item).siblings('.icon-right').hide()
+    }
 }

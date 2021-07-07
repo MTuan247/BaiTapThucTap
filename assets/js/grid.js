@@ -33,6 +33,12 @@ function initEvents() {
     $('.filter-bar .refresh').click(function (){
         new Main()
     })
+
+    $("table").on('click','tr',function(){
+        modalFadeIn()
+        let employeeId = $(this).attr('employeeId')
+        main.loadDataById(employeeId)
+    })
 }
 
  
