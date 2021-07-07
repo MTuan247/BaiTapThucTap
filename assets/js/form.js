@@ -51,7 +51,6 @@ function submit() {
         "createdBy": "",
         "modifiedDate": "",
         "modifiedBy": "",
-        "employeeId": "",
         "employeeCode": "",
         "firstName": "",
         "lastName": "",
@@ -69,7 +68,6 @@ function submit() {
         "educationalBackground": 0,
         "qualificationId": "",
         "departmentId": "",
-        "positionId": "",
         "workStatus": 0,
         "personalTaxCode": "",
         "salary": 0,
@@ -90,6 +88,7 @@ function submit() {
         }
         data[fieldName] = value;
     })
+    data = JSON.stringify(data)
     console.log(data)
     main.addData(data)
 }

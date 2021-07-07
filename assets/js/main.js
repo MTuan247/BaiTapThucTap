@@ -82,7 +82,9 @@ class Main {
             $.ajax({
                 url: "http://cukcuk.manhnv.net/v1/Employees",
                 method: "post",
+                dataType: "application/json",
                 data: data,
+                contentType: "application/json-patch+json",
                 success: function (response) {
                     console.log(response)
                 }
