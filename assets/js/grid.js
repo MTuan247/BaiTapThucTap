@@ -55,6 +55,10 @@ function initEvents() {
         resetForm()
         $('.modal .info-form').attr('employeeId', '')
     })
+
+    $('.toggle-icon').click(function(){
+        $('.content').toggleClass('content--collapse')
+    })
 }
 
  

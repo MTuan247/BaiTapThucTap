@@ -35,7 +35,7 @@ class ComboBox {
         });
 
         $(".combo-box input").on('input', function () {
-            me.detectItemMatched()
+            me.detectItemMatched($(this).parent())
         })
 
         $(".combo-box input").focus(function(){
@@ -117,9 +117,10 @@ class ComboBox {
      * Hàm xác đinh items phù hợp, autocomplete
      * Author: NMTuan (07/07/2021)
      */
-    detectItemMatched() {
-        let items = $(".combo-box .combo-box__item")
-        let value = $(".combo-box .value").val()
+    detectItemMatched(el) {
+        let items = $(el).find('.combo-box__item')
+        let value = $(el).find('.value').val()
+        debugger
         value = removeAccents(value)
         value = value.toLowerCase()
         $(items).each((each, item) => {

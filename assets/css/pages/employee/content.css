@@ -1,12 +1,21 @@
 .content {
     position: absolute;
-    top: 61px;
-    left: 221px;
-    width: calc(100% - 221px);
+    top: 48px;
+    left: 220px;
+    width: calc(100% - 220px);
     /* width: 100%; */
-    height: calc(100vh - 61px);
+    height: calc(100% - 48px);
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    border-top: 1px solid #e5e5e5;
+    border-left: 1px solid #e5e5e5;
+    background-color: #fff;
+}
+
+.content--collapse {
+    left: 50px;
+    width: calc(100% - 50px);
 }
 
 /* Content header */
