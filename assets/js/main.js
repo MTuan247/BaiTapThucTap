@@ -77,6 +77,11 @@ class Main {
         })
     }
 
+    /**
+     * Hàm thêm dữ liệu, post method
+     * Author: NMTuan (08/07/2021)
+     * @param {json} data 
+     */
     addData(data) {
         try {
             $.ajax({
@@ -94,12 +99,49 @@ class Main {
         }
     }
 
-    updateData() {
-
+    /**
+     * Hàm update data, put method
+     * Author: NMTuan (08/07/2021)
+     * @param {string} id 
+     * @param {json} data 
+     */
+    updateData(id, data) {
+        try {
+            $.ajax({
+                url: "http://cukcuk.manhnv.net/v1/Employees/" + id,
+                method: "put",
+                dataType: "application/json",
+                data: data,
+                contentType: "application/json-patch+json",
+                success: function (response) {
+                    console.log(response)
+                }
+            });
+        } catch (error) {
+            console.log(error)
+        }
     }
 
-    deleteData() {
-
+    /**
+     * Hàm xóa dữ liệu, delete method
+     * Author: NMTuan (08/07/2021)
+     * @param {string} id employeeId
+     */
+    deleteData(id) {
+        try {
+            $.ajax({
+                url: "http://cukcuk.manhnv.net/v1/Employees/" + id,
+                method: "delete",
+                // dataType: "application/json",
+                // data: data,
+                // contentType: "application/json-patch+json",
+                success: function (response) {
+                    console.log(response)
+                }
+            });
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     loadDataById(id) {

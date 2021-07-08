@@ -8,10 +8,14 @@ class ComboBox {
         this.initEvent()
     }
 
+    /**
+     * Hàm thêm event
+     * Author: NMTuan (07/07/2021)
+     */
     initEvent() {
         let me = this;
         $(".combo-box").find('.combo-box__icon').click(function () {
-            me.toggleFade(this)
+            me.toggleFade($(this).parent())
         });
         $(".combo-box").keypress(function (e) {
             if (e.code == "Enter") {
@@ -25,7 +29,8 @@ class ComboBox {
         $(".combo-box .combo-box__item").keypress(function (e) {
             if (e.code == "Enter") {
                 me.selectItem(this)
-                $(this).closest('combo-box').focus()
+                $(this).next('.combo-box').focus()
+                // me.collaseFadeOut($(this).closest('.combo-box'))
             }
         });
 
@@ -41,19 +46,26 @@ class ComboBox {
         $(".combo-box input").focusout(function(){
             $(this).parent().removeClass('combo-box--focus')
         })
+
     }
 
     /**
-     * Method hiện collapse dropdown
+     * Method ẩn, hiện collapse combo-box
+     * Author: NMTuan (07/07/2021)
      * @param {element} el 
      */
     toggleFade(el) {
-        $('.combo-box').not($(el).parent()).find('.collapse').fadeOut()
-        $(el).siblings('.collapse').fadeToggle()
-        $(el).toggleClass('rotate')
+        $('.combo-box').not(el).find('.collapse').fadeOut()
+        $(el).find('.collapse').fadeToggle()
+        $(el).find('.combo-box__icon').toggleClass('rotate')
         this.detectSelectDropdownItem()
     }
 
+    /**
+     * Hàm hiện combo-box collaspe
+     * Author: NMTuan (07/07/2021)
+     * @param {element} el element combobox
+     */
     collaseFadeIn(el) {
         $('.combo-box').not($(el).parent()).find('.collapse').fadeOut()
         $(el).parent().find('.collapse').fadeIn()
@@ -61,13 +73,18 @@ class ComboBox {
         this.detectSelectDropdownItem()
     }
 
+    /**
+     * Hàm ẩn collapse
+     * @param {element} el element combobox 
+     */
     collaseFadeOut(el) {
         $(el).find('.collapse').fadeOut()
-        $(el).find('.combo-box-icon').removeClass('rotate')
+        $(el).find('.combo-box__icon').removeClass('rotate')
     }
 
     /**
      * Method lựa chọn dropdown item được chọn
+     * Author: NMTuan (07/07/2021)
      * @param {element} el 
      */
     selectItem(el) {
@@ -77,6 +94,7 @@ class ComboBox {
 
     /**
      * Method xác định dropdown item đã được chọn
+     * Author: NMTuan (07/07/2021)
      */
     detectSelectDropdownItem() {
         let dropdown = $(".combo-box");
@@ -95,7 +113,10 @@ class ComboBox {
         }
     }
 
-    
+    /**
+     * Hàm xác đinh items phù hợp, autocomplete
+     * Author: NMTuan (07/07/2021)
+     */
     detectItemMatched() {
         let items = $(".combo-box .combo-box__item")
         let value = $(".combo-box .value").val()
@@ -135,28 +156,4 @@ document.onclick = function (event) {
             }
         }
     }
-}
-
-function removeAccents(str) {
-    var AccentsMap = [
-        "aàảãáạăằẳẵắặâầẩẫấậ",
-        "AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬ",
-        "dđ", "DĐ",
-        "eèẻẽéẹêềểễếệ",
-        "EÈẺẼÉẸÊỀỂỄẾỆ",
-        "iìỉĩíị",
-        "IÌỈĨÍỊ",
-        "oòỏõóọôồổỗốộơờởỡớợ",
-        "OÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢ",
-        "uùủũúụưừửữứự",
-        "UÙỦŨÚỤƯỪỬỮỨỰ",
-        "yỳỷỹýỵ",
-        "YỲỶỸÝỴ"
-    ];
-    for (var i = 0; i < AccentsMap.length; i++) {
-        var re = new RegExp('[' + AccentsMap[i].substr(1) + ']', 'g');
-        var char = AccentsMap[i][0];
-        str = str.replace(re, char);
-    }
-    return str;
 }

@@ -99,3 +99,17 @@ function fadeInMessage(el, message) {
     $(el).css('display', 'flex')
     $(el).fadeOut(3000)
 }
+
+/**
+ * Hàm kiểm tra kí tự vừa nhập có phải là số
+ * Author: NMTuan (08/07/2021)
+ * @param {event} e 
+ * @returns 
+ */
+function isNumber(e) {
+    var charCode = (e.which) ? (e.which) : (e.keyCode)
+    if ( charCode > 31 && (charCode > 57 || charCode < 48)) {
+        return false;
+    }
+    return true;
+}

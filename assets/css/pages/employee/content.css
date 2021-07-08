@@ -39,6 +39,14 @@
     display: flex;
 }
 
+.filter-bar .btn-action-area {
+    display: flex;
+}
+
+.filter-bar .btn-action-area .btn-action {
+    margin-left: 8px;
+}
+
 
 /* input field */
 
@@ -57,6 +65,14 @@
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+}
+
+.filter-bar .delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 48px;
 }
 
 /* grid CSS */

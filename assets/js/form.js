@@ -15,10 +15,12 @@ function toggleModal() {
 
     $('.info-form .form__footer #cancel').click(() => {
         $('.modal').fadeOut()
+        resetForm()
     })
 
     $('.info-form #submit').click(() => {
-        submit()
+        submitForm()
+        $('.modal').fadeOut()
     })
 }
 
@@ -31,21 +33,26 @@ function formatMoneyOnChange(){
     $('#salary').on('input',function() {
         let value = $(this).val()
         value = value.replaceAll('.','')
+        value = value.replaceAll(',','')
         value = BigInt(value).toLocaleString('it-IT');
         $(this).val(value)
     })
 
 }
-
-function isNumber(e) {
-    var charCode = (e.which) ? (e.which) : (e.keyCode)
-    if ( charCode > 31 && (charCode > 57 || charCode < 48)) {
-        return false;
-    }
-    return true;
+ 
+/**
+ * Hàm thực hiện reset lại form
+ * Author: NMTuan (08/07/2021)
+ */
+function resetForm() {
+    $('.info-form').find('.form__field-input').find('input').val("")
 }
 
-function submit() {
+/**
+ * Hàm thực hiện submit form
+ * Author: NMTuan (08/07/2021)
+ */
+function submitForm() {
     let data  = {
         "createdDate": "",
         "createdBy": "",
@@ -77,18 +84,29 @@ function submit() {
         "departmentName": "",
         "qualificationName": ""
       }
-    $('.field-label').each((index, item) => {
+    $('.form__field-input').each((index, item) => {
         let fieldName = $(item).attr('fieldName')
         let fieldType = $(item).attr('fieldType')
         let value = $(item).find('input').val()
         if(fieldType == 'Date') value = new Date(value)
-        if(fieldType == 'Money') {
+        else if(fieldType == 'Money') {
             value = value.replaceAll('.','')
+            value = value.replaceAll(',','')
             value = parseInt(value)
+        } else if (fieldName == 'GenderName') {
+            if (value == 'Nam') data['Gender'] = 1;
+            else if (value == 'Nữ') data['Gender'] = 0;
+            else if (value == 'Không xác định') data['Gender'] = 2;
+
         }
         data[fieldName] = value;
     })
     data = JSON.stringify(data)
-    console.log(data)
-    main.addData(data)
+    let employeeId = $('.modal .info-form').attr('employeeId')
+    if (employeeId == '') {
+        main.addData(data)
+    } else if (employeeId != '') {
+        data["employeeId"] = employeeId;
+        main.updateData(employeeId, data)
+    }
 }

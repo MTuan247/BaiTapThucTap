@@ -35,15 +35,25 @@ function initEvents() {
         main.loadData()
     })
 
-    $("table").on('click','tbody tr',function(){
+    $('.filter-bar .delete').click(function (){
+        $('table tbody').find('tr.selected').each((index, item) => {
+            let employeeId = $(item).attr('employeeId')
+            console.log(employeeId)
+            main.deleteData(employeeId)
+        })
+    })
+
+    $("table").on('dblclick','tbody tr',function(){
         modalFadeIn()
         let employeeId = $(this).attr('employeeId')
         main.loadDataById(employeeId)
+        $('.modal .info-form').attr('employeeId', employeeId)
     })
 
     $('#add-employee').click(() => {
         modalFadeIn()
-        $('.modal form').trigger('reset')
+        resetForm()
+        $('.modal .info-form').attr('employeeId', '')
     })
 }
 
