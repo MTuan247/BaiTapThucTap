@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/layout/navbar.css">
+    <link rel="stylesheet" href="./assets/css/layout/header.css">
+    <link rel="stylesheet" href="./assets/css/layout/content.css">
+    <link rel="stylesheet" href="./assets/css/common/button.css">
+    <link rel="stylesheet" href="./assets/css/common/text.css">
+    <link rel="stylesheet" href="./assets/css/common/dropdown.css">
+    <link rel="stylesheet" href="./assets/css/common/combo-box.css">
+    <link rel="stylesheet" href="./assets/css/common/input.css">
+    <link rel="stylesheet" href="./assets/css/pages/form/form.css">
+</head>
+
+<body>
+    <div class="modal">
+        <div class="info-form">
+            <div class="div-icon close" style="background-image: url(./assets/icon/x.svg);"></div>
+            <div class="form__header">
+                <h1 class="text-title">Thông tin nhân viên</h1>
+            </div>
+            <div action="" class="form__body">
+                <div class="avatar">
+                    <div class="avatar-image" style="background-image: url('./assets/img/default-avatar.jpg');"></div>
+                    <div class="avatar-announce">Vui lòng chọn ảnh có định dạng jpg, png,...</div>
+                </div>
+                <div class="form__content">
+                    <div class="area">
+                        <div class="content__header">A.Thông tin chung</div>
+                        <div class="form__input">
+                            <div fieldName="EmployeeCode" class="field-label form__field-input">
+                                <div class="input-warning">
+                                    <span>Định dạng không đúng</span>
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
+                                <div class="label">Mã nhân viên (<span style="color: red;">*</span>)</div>
+                                <input class="field__input" type="text" name="" id="" required>
+                                <i class="fa fa-times icon-right" aria-hidden="true"></i>
+                            </div>
+                            <div fieldName="FullName" class="field-label form__field-input">
+                                <div class="input-warning">
+                                    <span>Định dạng không đúng</span>
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
+                                <div class="label">Họ và tên (<span style="color: red;">*</span>)</div>
+                                <input class="field__input" type="text" name="" id="" required>
+                                <i class="fa fa-times icon-right" aria-hidden="true"></i>
+                            </div>
+                            <div fieldName="DateOfBirth" fieldType="Date" class="field-label form__field-input">
+                                <div class="label">Ngày sinh</div>
+                                <input class="field__input" type="date" name="" id="">
+                            </div>
+                            <div fieldName="GenderName" class="field-label form__field-input">
+                                <div class="label">Giới tính</div>
+                                <!-- <div class="dropdown" tabindex="0">
+                                    <div class="value dropdown-text"></div>
+                                    <i class="fa fa-caret-down icon-right" aria-hidden="true"></i>
+                                    <div class="collapse">
+                                        <div class="dropdown-item">Nam</div>
+                                        <div class="dropdown-item">Nữ</div>
+                                    </div>
+                                </div> -->
+                                <div class="combo-box" tabindex="0">
+                                    <input type="text" class="value combo-box__text" value="" />
+                                    <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
+                                    <div class="collapse">
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                                aria-hidden="true"></i>Không xác định</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                                aria-hidden="true"></i>Nam</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                                aria-hidden="true"></i>Nữ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div fieldName="IdentityNumber" class="field-label form__field-input">
+                                <div class="input-warning">
+                                    <span>Định dạng không đúng</span>
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
+                                <div class="label">Số CMTND/ Căn cước (<span style="color: red;">*</span>)</div>
+                                <input class="field__input" type="number" name="" id="" required>
+                                <i class="fa fa-times icon-right" aria-hidden="true"></i>
+                            </div>
+                            <div fieldName="IdentityDate" fieldType="Date" class="field-label form__field-input">
+                                <div class="label">Ngày cấp</div>
+                                <input class="field__input" type="date" name="" id="">
+                            </div>
+                            <div fieldName="IdentityPlace" class="field-label form__field-input">
+                                <div class="label">Nơi cấp</div>
+                                <input class="field__input" type="text" name="" id="">
+                                <i class="fa fa-times icon-right" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="form__input">
+                            <div fieldName="Email" class="field-label form__field-input">
+                                <div class="input-warning">
+                                    <span>Định dạng không đúng</span>
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
+                                <div class="label">Email (<span style="color: red;">*</span>)</div>
+                                <input class="field__input" type="email" name="" id="" required>
+                                <i class="fa fa-times icon-right" aria-hidden="true"></i>
+                            </div>
+                            <div fieldName="PhoneNumber" class="field-label form__field-input">
+                                <div class="input-warning">
+                                    <span>Định dạng không đúng</span>
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                </div>
+                                <div class="label">Số điện thoại (<span style="color: red;">*</span>)</div>
+                                <input class="field__input" type="tel" name="" id="" pattern="^[0-9\-\+]{9,15}$"
+                                    required>
+                                <i class="fa fa-times icon-right" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="area">
+                        <div class="content__header">B.Thông tin công việc</div>
+                        <div class="form__input">
+                            <div fieldName="PositionName" class="field-label form__field-input">
+                                <div class="label">Vị trí</div>
+                                <div class="combo-box" tabindex="0">
+                                    <input type="text" class="value combo-box__text" value="" />
+                                    <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
+                                    <div class="collapse">
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                                aria-hidden="true"></i>Phòng Nhân sự</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                                aria-hidden="true"></i>Phòng Nghiên cứu</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                                aria-hidden="true"></i>Phòng Tài chính</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                                aria-hidden="true"></i>Phòng Đào tạo</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div fieldName="DepartmentName" class="field-label form__field-input">
+                                <div class="label">Phòng ban</div>
+                                <div class="combo-box" tabindex="0">
+                                    <input type="text" class="value combo-box__text" value="" />
+                                    <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
+                                    <div class="collapse">
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                                aria-hidden="true"></i>Phòng Nhân sự</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                                aria-hidden="true"></i>Phòng Công nghệ</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                                aria-hidden="true"></i>Phòng Marketting</div>
+                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                                aria-hidden="true"></i>Phòng đào tạo</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div fieldName="PersonalTaxCode" class="field-label form__field-input">
+                                <div class="label">Mã số thuế cá nhân</div>
+                                <input class="field__input" type="number" name="" id="">
+                                <i class="fa fa-times icon-right" aria-hidden="true"></i>
+                            </div>
+
+                            <div fieldName="Salary" fieldType="Money" class="field-label form__field-input">
+                                <div class="label">Mức lương cơ bản</div>
+                                <input onkeypress="return isNumber(event)" type="text" id="salary" maxlength="15"
+                                    name="" id="">
+                                <i class="fa fa-times icon-right" aria-hidden="true"></i>
+                            </div>
+
+                            <div fieldName="JoinDate" fieldType="Date" class="field-label form__field-input">
+                                <div class="label">Ngày gia nhập công ty</div>
+                                <input class="field__input" type="date" name="" id="">
+                            </div>
+
+                            <div fieldName="WorkStatus" class="field-label form__field-input">
+                                <div class="label">Tình trạng công việc</div>
+                                <input class="field__input" type="number" name="" id="">
+                                <i class="fa fa-times icon-right" aria-hidden="true"></i>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form__footer">
+                <!-- <div type="reset" id="Cancel" class="btn-seconds">Hủy</div> -->
+                <input type="reset" id="cancel" value="Hủy" class="btn-seconds" title="Hủy">
+                <input id="submit" type="submit" class="btn-icon" value="Lưu" title="Lưu">
+                <!-- <div class="btn-icon">Lưu</div> -->
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header-left">
+            <div class="logo-site">
+                <div class="toggle-icon" style="background-image: url('./assets/img/toggle.png');"></div>
+                <div class="site-icon" style="background-image: url('./assets/img/cukcuk-logo.png');"></div>
+            </div>
+            <div class="header-title">
+                <div class="text-title2">Nhà hàng biển đông</div>
+                <div class="dropdown-icon div-icon" style="background-image: url('./assets/icon/angle-down-solid.svg')">
+                </div>
+            </div>
+        </div>
+        <div class="account">
+            <div class="avatar" style="background-image: url('./assets/icon/avatar-default.png');"></div>
+            <div class="username text-title2">Nguyễn Văn Mạnh</div>
+            <div class="icon" style="background-image: url('./assets/icon/option.png');"></div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="navbar">
+            <div class="navbar-content">
+                <div class="nav-item">
+                    <div class="nav-item-icon" style="background-image: url('./assets/icon/dashboard.png')"></div>
+                    <div class="nav-item-text">Tổng quan</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-item-icon" style="background-image: url('./assets/icon/report.png')"></div>
+                    <div class="nav-item-text">Báo cáo</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-item-icon" style="background-image: url('./assets/icon/dashboard.png')"></div>
+                    <div class="nav-item-text">Mua hàng</div>
+                </div>
+                <a href="/customer.html">
+                    <div class="nav-item">
+                        <div class="nav-item-icon" style="background-image: url('./assets/icon/dic-employee.png')">
+                        </div>
+                        <div class="nav-item-text">Danh mục khách hàng</div>
+                    </div>
+                </a>
+                <a href="/employee.html">
+                    <div class="nav-item">
+                        <div class="nav-item-icon" style="background-image: url('./assets/icon/dic-employee.png')">
+                        </div>
+                        <div class="nav-item-text">Danh mục nhân viên</div>
+                    </div>
+                </a>
+                <div class="nav-item">
+                    <div class="nav-item-icon" style="background-image: url('./assets/icon/setting.png')"></div>
+                    <div class="nav-item-text">Thiết lập hệ thống</div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content-header">
+                <div class="content-title text-title">Danh sách nhân viên</div>
+                <div id="add-employee" class="content-title-btn btn-icon">
+                    <div class="icon-left div-icon" style="background-image: url('./assets/icon/add.png');"></div>
+                    <div>Thêm nhân viên</div>
+                </div>
+            </div>
+            <div class="filter-bar">
+                <div class="filter-area">
+
+                    <div class="search-field field">
+                        <div class="div-icon input-icon" style="background-image: url('./assets/icon/search.png');">
+                        </div>
+                        <input type="search" name="" id="" placeholder="Tìm kiếm">
+                        <i class="fa fa-times icon-right" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="combo-box filter" tabindex="0">
+                        <input type="text" class="value combo-box__text" value="Tất cả phòng ban" />
+                        <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
+                        <div class="collapse">
+                            <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                    aria-hidden="true"></i>Tất cả phòng ban</div>
+                            <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                    aria-hidden="true"></i>Phòng nhân sự</div>
+                            <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
+                                    aria-hidden="true"></i>Phòng sản xuất</div>
+                        </div>
+                    </div>
+
+                    <div class="filter dropdown" tabindex="0">
+                        <div class="value dropdown-text">Tất cả vị trí</div>
+                        <i class="fa fa-caret-down icon-right" aria-hidden="true"></i>
+                        <div class="collapse">
+                            <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Tất cả vị
+                                trí
+                            </div>
+                            <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Tổng giám
+                                đốc
+                            </div>
+                            <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Trưởng
+                                phòng
+                            </div>
+                            <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Nhân viên
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="btn-action-area">
+                    <div class="refresh btn-seconds btn-action"
+                        style="background-image: url('./assets/icon/refresh.png');">
+                    </div>
+                    <div class="delete btn-seconds btn-action">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="grid">
+                <table cellspacing=0>
+                    <thead>
+                        <tr>
+                            <th fieldName="Checkbox" style="width: 50px;"></th>
+                            <th fieldName="Index" style="width: 50px;">#</th>
+                            <th fieldName="EmployeeCode" style="width: 120px;">Mã nhân viên</th>
+                            <th fieldName="FullName" style="width: 200px;">Họ tên</th>
+                            <th fieldName="GenderName" style="width: 100px;">Giới tính</th>
+                            <th fieldName="DateOfBirth" style="width: 150px; text-align: center;">Ngày sinh</th>
+                            <th fieldName="PhoneNumber" style="width: 150px;">Điện thoại</th>
+                            <th fieldName="Email" style="width: 200px;">Email</th>
+                            <th fieldName="Salary" style="width: 180px; text-align: right; padding-right: 20px;">Mức
+                                lương
+                                cơ bản</th>
+                            <th fieldName="PositionName" style="width: 150px;">Vị trí/Chức vụ</th>
+                            <th fieldName="DepartmentName" style="width: 180px;">Bộ phận/Phòng ban</th>
+                            <th fieldName="WorkStatus" style="width: 200px;">Tình trạng công việc</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <!-- <tr>
+                        <td class="check-box" >
+                            <div class="custom-checkbox">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </div>
+                            <input type="checkbox" name="" id="">
+                        </td>
+                        <td>1</td>
+                        <td>MF900</td>
+                        <td>NMT</td>
+                        <td>Nam</td>
+                        <td>24/07/2000</td>
+                        <td>0339642686</td>
+                        <td>abc123456@zxc.vn</td>
+                        <td>Web Fresher</td>
+                        <td>Khối sản xuất</td>
+                        <td>10.000</td>
+                        <td>Intern</td>
+                    </tr> -->
+                </table>
+            </div>
+            <div class="paging-bar">
+                <div class="paging-left">
+                    Hiển thị 1-10/1000 nhân viên
+                </div>
+                <div class="paging-center">
+                    <div class="paging-item paging-control"
+                        style="background-image: url('./assets/icon/btn-firstpage.svg');"></div>
+                    <div class="paging-item paging-control"
+                        style="background-image: url('./assets/icon/btn-prev-page.svg');"></div>
+                    <div class="paging-item paging-number--active">1</div>
+                    <div class="paging-item paging-number">2</div>
+                    <div class="paging-item paging-number">3</div>
+                    <div class="paging-item paging-number">4</div>
+                    <div class="paging-item paging-control"
+                        style="background-image: url('./assets/icon/btn-next-page.svg');"></div>
+                    <div class="paging-item paging-control"
+                        style="background-image: url('./assets/icon/btn-lastpage.svg');"></div>
+                </div>
+                <div class="paging-right">
+                    10 nhân viên/trang
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./assets/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="./assets/js/common/format.js"></script>
+    <script src="./assets/js/common/modal.js"></script>
+    <script src="./assets/js/common/common.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/page/employee.js"></script>
+    <script src="./assets/js/combo-box.js"></script>
+    <script src="./assets/js/dropdown.js"></script>
+    <script src="./assets/js/input.js"></script>
+    <script src="./assets/js/grid.js"></script>
+    <script src="assets/js/form.js"></script>
+    <script src="./assets/js/form-validate.js"></script>
+</body>
+
+</html>

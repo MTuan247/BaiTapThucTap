@@ -105,15 +105,15 @@
     width: 300px;
 }
 
-.info-form .form__body .area .form__input .field-label input:not(.combo-box__text) {
+.info-form .form__body .area .form__input .form__field-input input:not(.combo-box__text) {
     width: 300px;
 }
 
-.info-form .form__body .area .form__input .field-label .combo-box__text {
+.info-form .form__body .area .form__input .form__field-input .combo-box__text {
     width: 270px;
 }
 
-.info-form .form__body .area .form__input .field-label .combo-box__icon {
+.info-form .form__body .area .form__input .form__field-input .combo-box__icon {
     display: block;
 }
 
@@ -121,7 +121,7 @@
     text-transform: uppercase;
 }
 
-.info-form .form__body .area .form__input .field-label,
+.info-form .form__body .area .form__input .form__field-input,
 .info-form .form__body .area .content__header {
     margin: 8px 16px;
 }

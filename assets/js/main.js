@@ -1,14 +1,11 @@
-let main;
-
-$(document).ready(function () {
-    main = new Main()
-});
-
 class Main {
     constructor() {
+        this.host = 'http://cukcuk.manhnv.net/v1/'
+        this.path = 'Employees'
+        this.url = this.host + this.path
+        this.data = []
         this.loadData()
         this.initEvents()
-        this.data = []
     }
 
     initEvents() {
@@ -19,11 +16,11 @@ class Main {
     * Hàm load dữ liệu từ api
     * Author: NMTuan (05/07/2021)
     */
-    async loadData() {
+    loadData() {
         let me = this;
         try {
-            await $.ajax({
-                url: "http://cukcuk.manhnv.net/v1/Employees",
+            $.ajax({
+                url: this.url,
                 method: "get",
                 success: function (response) {
                     console.log(response)
@@ -83,6 +80,7 @@ class Main {
      * @param {json} data 
      */
     addData(data) {
+        let me = this
         try {
             $.ajax({
                 url: "http://cukcuk.manhnv.net/v1/Employees",
@@ -90,8 +88,8 @@ class Main {
                 dataType: "application/json",
                 data: data,
                 contentType: "application/json-patch+json",
-                success: function (response) {
-                    console.log(response)
+                complete: function(){
+                    me.loadData()
                 }
             });
         } catch (error) {
@@ -106,6 +104,7 @@ class Main {
      * @param {json} data 
      */
     updateData(id, data) {
+        let me = this
         try {
             $.ajax({
                 url: "http://cukcuk.manhnv.net/v1/Employees/" + id,
@@ -113,10 +112,10 @@ class Main {
                 dataType: "application/json",
                 data: data,
                 contentType: "application/json-patch+json",
-                success: function (response) {
-                    console.log(response)
+                complete: function(){
+                    me.loadData()
                 }
-            });
+            })
         } catch (error) {
             console.log(error)
         }
@@ -128,6 +127,7 @@ class Main {
      * @param {string} id employeeId
      */
     deleteData(id) {
+        let me = this
         try {
             $.ajax({
                 url: "http://cukcuk.manhnv.net/v1/Employees/" + id,
@@ -135,8 +135,8 @@ class Main {
                 // dataType: "application/json",
                 // data: data,
                 // contentType: "application/json-patch+json",
-                success: function (response) {
-                    console.log(response)
+                complete: function(){
+                    me.loadData()
                 }
             });
         } catch (error) {

@@ -5,6 +5,20 @@
     background-color: #ffffff;
 }
 
+.navbar a {
+    text-decoration: none;
+    color: #000;
+}
+
+.nav-item--active {
+    background-color: #019160;
+    color: #fff;
+}
+
+.nav-item--active .nav-item-icon {
+    filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(344deg) brightness(104%) contrast(101%);
+}
+
 .navbar .navbar-content {
     width: 100%;
 }

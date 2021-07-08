@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    toggleModal()
+    initEventsModal()
     formatMoneyOnChange()
 });
 
@@ -7,7 +7,7 @@ $(document).ready(function () {
  * Hàm xử lý ẩn hiện modal
  * Author: NMTuan (05/07/2021)
  */
-function toggleModal() {
+function initEventsModal() {
 
     $('.info-form .close').click(() => {
         $('.modal').fadeOut()
@@ -20,8 +20,12 @@ function toggleModal() {
 
     $('.info-form #submit').click(() => {
         submitForm()
-        $('.modal').fadeOut()
     })
+
+    $( function() {
+        $(".info-form").resizable();
+        $(".info-form").draggable();
+    } );
 }
 
 
@@ -53,6 +57,7 @@ function resetForm() {
  * Author: NMTuan (08/07/2021)
  */
 function submitForm() {
+    if (!checkFormValid()) return;
     let data  = {
         "createdDate": "",
         "createdBy": "",
@@ -109,4 +114,23 @@ function submitForm() {
         data["employeeId"] = employeeId;
         main.updateData(employeeId, data)
     }
+    $('.modal').fadeOut()
+
+}
+
+/**
+ * Hàm kiểm tra form có trường không hợp lệ k
+ * Author: NMTuan (08/07/2021)
+ * @returns boolean form có hợp lệ
+ */
+function checkFormValid(){
+    let rs = true
+    $('.form__field-input').each((index, item) => {
+        $(item).trigger('focusout')
+        if($(item).find('input').hasClass('field--error')){
+            rs = false
+            return false
+        }    
+    })
+    return rs
 }

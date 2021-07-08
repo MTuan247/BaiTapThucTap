@@ -9,23 +9,83 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/components/toast.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/common/button.css">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/components/input-warning.css">
     <link rel="stylesheet" href="./assets/css/common/combo-box.css">
     <style>
-        .field-label {
-            width: 300px;
+        body {
+            background-color: #bbb;
+        }
+        .popup {
             margin: auto;
+            background-color: #fff;
+            border-radius: 4px;
+            width: 500px;
         }
 
-        .combo-box .combo-box__text {
+        .popup__header {
+            display: flex;
+            position: relative;
+        }
+
+        .popup__title {
+            font-size: 15px;
+            font-weight: bold;
+            width: 500px;
+            padding: 24px;
+        }
+
+        .popup__close {
+            background-image: url('./assets/icon/x.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            top: 0px;
+            right: 0px;
+            cursor: pointer;
+        }
+
+        .popup__close:hover {
+            background-color: #bbb;
+        }
+
+        .popup__body {
+            padding: 0 24px;
+            font-size: 13px;
+            font-weight: lighter;
+        }
+
+        .popup__footer {
+            display: flex;
+            margin-top: 24px;
+            height: 60px;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: #FFEBEB;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .popup__footer .confirm {
+            display: flex;
+            width: 100px;
+            margin-left: 16px;
+            margin-right: 24px;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background-color: #F65454;
+        }
+
+        .popup__footer .cancel {
+            display: flex;
+            width: 100px;
+            align-items: center;
+            justify-content: center;
             border: none;
-            width: 100%;
-            height: 100%;
-        }
-
-        .combo-box .combo-box__text:focus {
-            outline: none;
         }
     </style>
 </head>
@@ -43,40 +103,30 @@
         Định dạng không đúng
         <i class="fa fa-caret-down" aria-hidden="true"></i>
     </div>
-
-    <div class="field-label">
-        <div class="label">Vị trí</div>
-        <div class="combo-box" tabindex="0">
-            <input type="text" class="value combo-box__text" value="" />
-            <i class="fa fa-angle-down icon-right" aria-hidden="true"></i>
-            <div class="collapse">
-                <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Tất cả vị trí</div>
-                <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Tổng giám đốc</div>
-                <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Google</div>
-                <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Firefox</div>
-                <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Hiiiiiiiii</div>
-                <div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Heloooooooo</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="popup">
+        <div class="popup__header">
+            <div class="popup__title">Xóa bản ghi A</div>
+            <div class="popup__close"></div>
+        </div>
+        <div class="popup__body">
+            <div class="popup__icon"></div>
+            <div class="popup__content">
+                Bạn có chắc muốn đóng form nhập <b>"Thông tin chung của
+                    thủ tục 603"</b> hay không?
             </div>
         </div>
-    </div>
-    <div class="field-label">
-        <div class="label">Vị trí</div>
-        <div class="combo-box" tabindex="0">
-            <input type="text" class="value combo-box__text" value="" />
-            <i class="fa fa-caret-down icon-right" aria-hidden="true"></i>
-            <div class="collapse">
-                <div class="combo-box__item">Tất cả vị trí</div>
-                <div class="combo-box__item">Tổng giám đốc</div>
-                <div class="combo-box__item">Google</div>
-                <div class="combo-box__item">Firefox</div>
-                <div class="combo-box__item">Hiiiiiiiii</div>
-                <div class="combo-box__item">Heloooooooo</div>
-            </div>
+        <div class="popup__footer">
+            <div class="btn-seconds cancel">Hủy</div>
+            <div class="btn-default confirm">Xóa</div>
         </div>
-    </div>
+    </div>   
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./assets/js/combo-box.js"></script>
     <script>
     </script>
 </body>

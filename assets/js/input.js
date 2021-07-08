@@ -23,6 +23,10 @@ function inputHandle() {
     $('.field-label input').on('input', function(){
         showClearIcon(this)
     })
+    
+    $('.field input').on('input', function(){
+        showClearIcon(this)
+    })
 }
 
 /**
