@@ -5,8 +5,11 @@ $(document).ready(function () {
 
 class ComboBox {
     constructor() {
+        let me = this
+        this.loadCollapse('.combo-box[data-type=Department]','http://cukcuk.manhnv.net/api/Department','DepartmentName')
+        this.loadCollapse('.combo-box[data-type=Position]','http://cukcuk.manhnv.net/v1/Positions','PositionName')
+        // setTimeout(function(){me.initEvent()},500)
         this.initEvent()
-        this.loadDepartment('#department-combobox','http://cukcuk.manhnv.net/api/Department','DepartmentName')
     }
 
     /**
@@ -23,15 +26,27 @@ class ComboBox {
                 me.toggleFade(this)
             }
         });
-        $(".combo-box .combo-box__item").click(function () {
+        // $(".combo-box .combo-box__item").click(function () {
+        //     me.selectItem(this)
+        //     me.collapseFadeOut($(this).closest('.combo-box'))
+        // });
+        $(".combo-box").on('click', '.combo-box__item', function () {
             me.selectItem(this)
-            me.collaseFadeOut($(this).closest('.combo-box'))
+            me.collapseFadeOut($(this).closest('.combo-box'))
         });
-        $(".combo-box .combo-box__item").keypress(function (e) {
+        // $(".combo-box .combo-box__item").keypress(function (e) {
+        //     if (e.code == "Enter") {
+        //         me.selectItem(this)
+        //         $(this).next('.combo-box').focus()
+        //         // me.collapseFadeOut($(this).closest('.combo-box'))
+        //     }
+        // });
+
+        $(".combo-box").on('keypress', '.combo-box__item', function (e) {
+            console.log(e)
             if (e.code == "Enter") {
                 me.selectItem(this)
                 $(this).next('.combo-box').focus()
-                // me.collaseFadeOut($(this).closest('.combo-box'))
             }
         });
 
@@ -40,7 +55,7 @@ class ComboBox {
         })
 
         $(".combo-box input").focus(function(){
-            me.collaseFadeIn(this)
+            me.collapseFadeIn(this)
             $(this).parent().addClass('combo-box--focus')
         })
 
@@ -67,7 +82,7 @@ class ComboBox {
      * Author: NMTuan (07/07/2021)
      * @param {element} el element combobox
      */
-    collaseFadeIn(el) {
+    collapseFadeIn(el) {
         $('.combo-box').not($(el).parent()).find('.collapse').fadeOut()
         $(el).parent().find('.collapse').fadeIn()
         $(el).siblings('.combo-box__icon').addClass('rotate')
@@ -78,7 +93,7 @@ class ComboBox {
      * Hàm ẩn collapse
      * @param {element} el element combobox 
      */
-    collaseFadeOut(el) {
+    collapseFadeOut(el) {
         $(el).find('.collapse').fadeOut()
         $(el).find('.combo-box__icon').removeClass('rotate')
     }
@@ -136,14 +151,15 @@ class ComboBox {
         })
     }
 
-    loadDepartment(el, url, name) {
+    loadCollapse(el, url, name, func = function(){}) {
         let me = this
         try {
             $.ajax({
                 url: url,
                 method: "get",
                 success: function(response){
-                    me.bindDepartmentData(response, el ,name)
+                    me.bindCollapse(response, el ,name)
+                    func()
                 }
             })
         } catch (error) {
@@ -151,8 +167,7 @@ class ComboBox {
         }
     }
 
-    bindDepartmentData(response, target, name){
-        // let el = el
+    bindCollapse(response, target, name){
         response.map((item) => {
             let el = $(`<div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>${ item[name] }</div>`)
                 .appendTo($(target).find('.collapse'))
@@ -160,6 +175,7 @@ class ComboBox {
                 el.data(key, item[key])
             }
         })
+
     }
 
 }
@@ -171,7 +187,6 @@ class ComboBox {
  * @param {event} event 
  */
 document.onclick = function (event) {
-    // if (!event.target.matches('.combo-box') & !event.target.matches('.value') & !event.target.matches('.combo-box__icon')) {
     if ($('.combo-box').has(event.target).length === 0 && !$('.combo-box').is(event.target)) {
         var comboBoxs = document.querySelectorAll('.combo-box .collapse')
         var icon = document.querySelectorAll('.combo-box .combo-box__icon')

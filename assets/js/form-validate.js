@@ -51,26 +51,47 @@ function validateRequired(el){
 /**
  * Hàm kiểm tra input và trả về thông báo
  * Author: NMTuan (06/07/2021)
+ * Update: (09/07/2021)
  * @param {element} el 
  * @returns 
  */
 function validateMessage(el) {
-    let inputRequired = $(el).find('input[required]');
-    let inputEmail = $(el).find('input[type="email"]')
-    let valueRequired = $(inputRequired).val();
-    let valueEmail = $(inputEmail).val()
-    const emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!valueRequired) {
-        $(inputRequired).addClass('field--error')
-        return "Không được để trống"
-    } else if (!emailPattern.test(valueEmail) && valueEmail){
-        $(inputEmail).addClass('field--error')
-        return "Email k đúng đinh dạng"
-    } else {
-        $(inputEmail).removeClass('field--error')
-        $(inputRequired).removeClass('field--error')
-        return ""
+    // let inputRequired = $(el).find('input[required]');
+    // let inputEmail = $(el).find('input[type="email"]')
+    // let valueRequired = $(inputRequired).val();
+    // let valueEmail = $(inputEmail).val()
+    // const emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // if (!valueRequired) {
+    //     $(inputRequired).addClass('field--error')
+    //     return "Không được để trống"
+    // } else if (!emailPattern.test(valueEmail) && valueEmail){
+    //     $(inputEmail).addClass('field--error')
+    //     return "Email k đúng đinh dạng"
+    // } else {
+    //     $(inputEmail).removeClass('field--error')
+    //     $(inputRequired).removeClass('field--error')
+    //     return ""
+    // }
+
+    let input = $(el).find('input');
+    let value = $(el).find('input').val()
+    if($(input).attr('required')) {
+        if(!value) {
+            $(input).addClass('field--error')
+            return "Không được để trống"
+        }
     }
+    if($(input).attr('type') == 'email') {
+        let emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!emailPattern.test(value)) {
+            $(input).addClass('field--error')
+            return "Email k đúng đinh dạng"
+        }
+    }
+
+    $(input).removeClass('field--error')
+    return ""
+    
 }
 
 

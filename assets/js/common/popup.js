@@ -58,11 +58,18 @@ function showAlarmPopup(){
     `)
 
     $('.popup__background').on('click','.popup .confirm', function(){
+        let employeeIds = []
         $('table tbody').find('tr.selected').each((index, item) => {
             let employeeId = $(item).attr('employeeId')
-            console.log(employeeId)
-            main.deleteData(employeeId)
+            employeeIds.push(employeeId)
         })
+        let rs = main.deleteMultiple(employeeIds)
+        if (rs) {
+            showToast('success','Đã xóa thành công!')
+            main.loadData()
+        } else {
+            showToast('error', 'Có lỗi xảy ra!')
+        }
         hidePopup()
     })
 

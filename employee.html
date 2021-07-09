@@ -127,36 +127,20 @@
                         <div class="form__input">
                             <div fieldName="PositionName" class="field-label form__field-input">
                                 <div class="label">Vị trí</div>
-                                <div class="combo-box" tabindex="0">
+                                <div data-type="Position" class="combo-box" tabindex="0">
                                     <input type="text" class="value combo-box__text" value="" />
                                     <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
                                     <div class="collapse">
-                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
-                                                aria-hidden="true"></i>Phòng Nhân sự</div>
-                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
-                                                aria-hidden="true"></i>Phòng Nghiên cứu</div>
-                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
-                                                aria-hidden="true"></i>Phòng Tài chính</div>
-                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
-                                                aria-hidden="true"></i>Phòng Đào tạo</div>
                                     </div>
                                 </div>
                             </div>
 
                             <div fieldName="DepartmentName" class="field-label form__field-input">
                                 <div class="label">Phòng ban</div>
-                                <div class="combo-box" tabindex="0">
+                                <div data-type="Department" class="combo-box" tabindex="0">
                                     <input type="text" class="value combo-box__text" value="" />
                                     <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
                                     <div class="collapse">
-                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
-                                                aria-hidden="true"></i>Phòng Nhân sự</div>
-                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
-                                                aria-hidden="true"></i>Phòng Công nghệ</div>
-                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
-                                                aria-hidden="true"></i>Phòng Marketting</div>
-                                        <div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left"
-                                                aria-hidden="true"></i>Phòng đào tạo</div>
                                     </div>
                                 </div>
                             </div>
@@ -268,7 +252,7 @@
                         <i class="fa fa-times icon-right" aria-hidden="true"></i>
                     </div>
 
-                    <div id="department-combobox" class="combo-box filter" tabindex="0">
+                    <div data-type="Department" class="combo-box filter" tabindex="0">
                         <input type="text" class="value combo-box__text" value="Tất cả phòng ban" />
                         <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
                         <div class="collapse">

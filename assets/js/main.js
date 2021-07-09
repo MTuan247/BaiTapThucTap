@@ -104,14 +104,12 @@ class Main {
             $.ajax({
                 url: "http://cukcuk.manhnv.net/v1/Employees",
                 method: "post",
-                dataType: "application/json",
+                dataType: "json",
                 data: data,
                 contentType: "application/json-patch+json",
-                complete: function(){
-                    me.loadData()
-                }
             }).done(function(){
                 showToast('success', 'Thêm dữ liệu thành công!')
+                me.loadData()
             }).fail(function(){
                 showToast('error', 'Có lỗi xảy ra!')
             });
@@ -134,14 +132,12 @@ class Main {
             $.ajax({
                 url: "http://cukcuk.manhnv.net/v1/Employees/" + id,
                 method: "put",
-                dataType: "application/json",
+                dataType: "json",
                 data: data,
                 contentType: "application/json-patch+json",
-                complete: function(){
-                    me.loadData()
-                }
             }).done(function(){
-                showToast('success','Cập nhật dữ liệu thành công!')
+                showToast('success','Sửa dữ liệu thành công!')
+                me.loadData()
             }).fail(function(){
                 showToast('error', 'Có lỗi xảy ra!')
             })
@@ -151,7 +147,7 @@ class Main {
     }
     //#endregion
 
-    //#region Xóa 1 bản ghi
+    //#region Xóa bản ghi
     /**
      * Hàm xóa dữ liệu, delete method
      * Author: NMTuan (08/07/2021)
@@ -163,17 +159,37 @@ class Main {
             $.ajax({
                 url: "http://cukcuk.manhnv.net/v1/Employees/" + id,
                 method: "delete",
-                complete: function(){
-                    me.loadData()
-                }
             }).done(function(){
                 showToast('success','Đã xóa thành công!')
+                me.loadData()
             }).fail(function(){
                 showToast('error', 'Có lỗi xảy ra!')
             });
         } catch (error) {
             console.log(error)
         }
+    }
+
+    deleteMultiple(data) {
+        let me = this
+        let rs = true
+        try {
+            for ( var index in data) {
+                $.ajax({
+                    url: "http://cukcuk.manhnv.net/v1/Employees/" + data[index],
+                    method: "delete",
+                }).done(function(){
+                    console.log(index)
+                }).fail(function(error){
+                    console.log(error)
+                    rs = false;
+                });
+            }
+        } catch (error) {
+            console.log(error)
+        }
+        return rs;
+
     }
     //#endregion
 
