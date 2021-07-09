@@ -6,6 +6,7 @@ $(document).ready(function () {
 class ComboBox {
     constructor() {
         this.initEvent()
+        this.loadDepartment('#department-combobox','http://cukcuk.manhnv.net/api/Department','DepartmentName')
     }
 
     /**
@@ -131,6 +132,32 @@ class ComboBox {
                 $(item).show()
             } else {
                 $(item).hide()
+            }
+        })
+    }
+
+    loadDepartment(el, url, name) {
+        let me = this
+        try {
+            $.ajax({
+                url: url,
+                method: "get",
+                success: function(response){
+                    me.bindDepartmentData(response, el ,name)
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    bindDepartmentData(response, target, name){
+        // let el = el
+        response.map((item) => {
+            let el = $(`<div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>${ item[name] }</div>`)
+                .appendTo($(target).find('.collapse'))
+            for (var key in item) {
+                el.data(key, item[key])
             }
         })
     }

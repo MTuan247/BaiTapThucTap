@@ -33,14 +33,11 @@ function initEvents() {
     
     $('.filter-bar .refresh').click(function (){
         main.loadData()
+        // showErrorToast()
     })
 
     $('.filter-bar .delete').click(function (){
-        $('table tbody').find('tr.selected').each((index, item) => {
-            let employeeId = $(item).attr('employeeId')
-            console.log(employeeId)
-            main.deleteData(employeeId)
-        })
+        showAlarmPopup()
     })
 
     $("table").on('dblclick','tbody tr',function(){
@@ -50,10 +47,12 @@ function initEvents() {
         $('.modal .info-form').attr('employeeId', employeeId)
     })
 
-    $('#add-employee').click(() => {
+    $('#add-employee').click(async () => {
         modalFadeIn()
         resetForm()
         $('.modal .info-form').attr('employeeId', '')
+        let employeeCode = await main.getNewEmployeeCode()
+        $('.info-form .field-label').first().find('input').val(employeeCode)
     })
 
     $('.toggle-icon').click(function(){

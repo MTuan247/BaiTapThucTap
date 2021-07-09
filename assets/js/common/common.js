@@ -4,7 +4,6 @@ $(document).ready(function(){
 
 function checkMatchUrl(href){
     let path = window.location.pathname
-    console.log(path)
     $('.navbar').find('a').each((index, item) => {
         let href = $(item).attr('href')
         if (href == path) {

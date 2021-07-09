@@ -11,124 +11,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/common/button.css">
     <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/components/input-warning.css">
-    <link rel="stylesheet" href="./assets/css/common/combo-box.css">
     <style>
         body {
             background-color: #bbb;
-        }
-        .popup {
-            margin: auto;
-            background-color: #fff;
-            border-radius: 4px;
-            width: 500px;
-        }
-
-        .popup__header {
             display: flex;
-            position: relative;
-        }
-
-        .popup__title {
-            font-size: 15px;
-            font-weight: bold;
-            width: 500px;
-            padding: 24px;
-        }
-
-        .popup__close {
-            background-image: url('./assets/icon/x.svg');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            top: 0px;
-            right: 0px;
-            cursor: pointer;
-        }
-
-        .popup__close:hover {
-            background-color: #bbb;
-        }
-
-        .popup__body {
-            padding: 0 24px;
-            font-size: 13px;
-            font-weight: lighter;
-        }
-
-        .popup__footer {
-            display: flex;
-            margin-top: 24px;
-            height: 60px;
-            justify-content: flex-end;
-            align-items: center;
-            background-color: #FFEBEB;
-            border-radius: 0 0 4px 4px;
-        }
-
-        .popup__footer .confirm {
-            display: flex;
-            width: 100px;
-            margin-left: 16px;
-            margin-right: 24px;
-            align-items: center;
             justify-content: center;
-            color: #fff;
-            background-color: #F65454;
-        }
-
-        .popup__footer .cancel {
-            display: flex;
-            width: 100px;
             align-items: center;
-            justify-content: center;
-            border: none;
+            height: 100vh;
         }
+        
     </style>
 </head>
 
 <body>
     <div class="toast toast--error">
-        <i class="fa fa-exclamation-triangle toast__icon" aria-hidden="true"></i>
+        <div class="toast__icon">
+            <img src="./assets/icon/alert.png" alt="">
+        </div>
         <div class="toast__messenger">Nội dung đi kèm tiêu đề</div>
-        <i class="fa fa-times toast__close-icon" aria-hidden="true"></i>
+        <i class="fa fa-times toast__close-icon" aria-hidden="true" onclick="hideToast($(this).parent())"></i>
     </div>
-    <br>
-    <br>
-    <br>
-    <div class="input-warning">
-        Định dạng không đúng
-        <i class="fa fa-caret-down" aria-hidden="true"></i>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="popup">
-        <div class="popup__header">
-            <div class="popup__title">Xóa bản ghi A</div>
-            <div class="popup__close"></div>
-        </div>
-        <div class="popup__body">
-            <div class="popup__icon"></div>
-            <div class="popup__content">
-                Bạn có chắc muốn đóng form nhập <b>"Thông tin chung của
-                    thủ tục 603"</b> hay không?
-            </div>
-        </div>
-        <div class="popup__footer">
-            <div class="btn-seconds cancel">Hủy</div>
-            <div class="btn-default confirm">Xóa</div>
-        </div>
-    </div>   
+   
+    <button onclick="showErrorToast()">Click</button>
     
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-    </script>
+    <script src="./assets/js/common/toast.js"></script>
 </body>
 
 </html>

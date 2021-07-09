@@ -3,6 +3,7 @@ class Main {
         this.host = 'http://cukcuk.manhnv.net/v1/'
         this.path = 'Employees'
         this.url = this.host + this.path
+        this.firstLoad = true;
         this.data = []
         this.loadData()
         this.initEvents()
@@ -11,6 +12,8 @@ class Main {
     initEvents() {
         
     }
+
+    //#region Lấy bản ghi từ api
 
     /**
     * Hàm load dữ liệu từ api
@@ -23,18 +26,29 @@ class Main {
                 url: this.url,
                 method: "get",
                 success: function (response) {
-                    console.log(response)
                     me.data = response
                     me.bindData(me.data)
                 }
-            });
+            }).done(function(response){
+                console.log(response)
+                showToast('success', 'Cập nhật dữ liệu thành công!', me.firstLoad)
+                me.firstLoad = false;
+            }).fail(function(error){
+                console.log(error)
+                showToast('error','Có lỗi xảy ra!')
+            })
         } catch (error) {
             console.log(error)
         }
     }
 
+    //#endregion
+
+    //#region Bind dữ liệu vào table
+
     /**
-     * Hàm bind data
+     * Hàm bind data vào table
+     * @author: NMTuan (08/07/2021)
      * @param {json} response 
      */
     bindData(response) {
@@ -61,8 +75,11 @@ class Main {
         })
     }
 
+    //#endregion
+
     /**
      * Hàm sắp xếp dữ liệu
+     * Hàm viết thừa không dùng để làm gì
      * @param {fieldName} fieldName 
      */
     sortData(fieldName) {
@@ -73,6 +90,8 @@ class Main {
             return 0;
         })
     }
+
+    //#region Thêm 1 bản ghi mơi
 
     /**
      * Hàm thêm dữ liệu, post method
@@ -91,12 +110,18 @@ class Main {
                 complete: function(){
                     me.loadData()
                 }
+            }).done(function(){
+                showToast('success', 'Thêm dữ liệu thành công!')
+            }).fail(function(){
+                showToast('error', 'Có lỗi xảy ra!')
             });
         } catch (error) {
             console.log(error)
         }
     }
+    //#endregion
 
+    //#region Update lại dữ liệu 1 bản ghi
     /**
      * Hàm update data, put method
      * Author: NMTuan (08/07/2021)
@@ -115,12 +140,18 @@ class Main {
                 complete: function(){
                     me.loadData()
                 }
+            }).done(function(){
+                showToast('success','Cập nhật dữ liệu thành công!')
+            }).fail(function(){
+                showToast('error', 'Có lỗi xảy ra!')
             })
         } catch (error) {
             console.log(error)
         }
     }
+    //#endregion
 
+    //#region Xóa 1 bản ghi
     /**
      * Hàm xóa dữ liệu, delete method
      * Author: NMTuan (08/07/2021)
@@ -132,18 +163,25 @@ class Main {
             $.ajax({
                 url: "http://cukcuk.manhnv.net/v1/Employees/" + id,
                 method: "delete",
-                // dataType: "application/json",
-                // data: data,
-                // contentType: "application/json-patch+json",
                 complete: function(){
                     me.loadData()
                 }
+            }).done(function(){
+                showToast('success','Đã xóa thành công!')
+            }).fail(function(){
+                showToast('error', 'Có lỗi xảy ra!')
             });
         } catch (error) {
             console.log(error)
         }
     }
+    //#endregion
 
+    //#region Lấy dữ liệu 1 bản ghi theo id
+    /**
+     * Hàm lấy dữ liệu 1 bản ghi theo id
+     * @param {string} id employeeId
+     */
     loadDataById(id) {
         let me = this;
         try {
@@ -162,7 +200,9 @@ class Main {
                         $(item).trigger('focusout')
                     })
                 }
-            });
+            }).fail(function(){
+                showToast('error', 'Có lỗi xảy ra!')
+            })
         } catch (error) {
             console.log(error)
         }
@@ -171,4 +211,31 @@ class Main {
     bindDataToForm() {
 
     }
+
+    //#endregion
+
+    //#region Lấy mã nhân viên mới
+    async getNewEmployeeCode(){
+        let me = this;
+        let res;
+        try {
+            await $.ajax({
+                url: this.url + "/NewEmployeeCode",
+                method: "get",
+                success: function (response) {
+                    console.log(response)
+                    res = response
+                }
+            }).fail(function(){
+                showToast('error', 'Có lỗi xảy ra!')
+            })
+        } catch (error) {
+            console.log(error)
+        }
+
+        return res;
+    }
+    //#endregion
+
+
 }

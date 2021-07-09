@@ -10,7 +10,7 @@ $(document).ready(function () {
 function initEventsModal() {
 
     $('.info-form .close').click(() => {
-        $('.modal').fadeOut()
+        showWarningPopup()
     })
 
     $('.info-form .form__footer #cancel').click(() => {
