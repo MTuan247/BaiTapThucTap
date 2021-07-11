@@ -7,35 +7,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./assets/css/components/toast.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./assets/css/common/button.css">
     <link rel="stylesheet" href="./assets/css/main.css">
     <style>
         body {
-            background-color: #bbb;
+            background-color: #eee;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
-        
+
+        .combo-box {
+            padding-left: 16px;
+            padding-right: 12px;
+            border: 1px solid #BBBBBB;
+            height: 40px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #000000;
+            cursor: pointer;
+            background-color: #fff;
+
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            user-select: none;
+        }
+
+        .combo-box--focus {
+            border-color: #019160;
+        }
+
+        .combo-box:focus {
+            outline: none;
+            border-color: #019160;
+        }
+
+
+
+        .combo-box .combo-box__text {
+            border: none;
+            width: 270px;
+            height: 100%;
+            font-size: 13px;
+            font-family: GoogleSans-Regular;
+        }
+
+        .combo-box .combo-box__text:focus {
+            border: none;
+            outline: none;
+        }
+
+        .combo-box .collapse {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 0px;
+            background-color: white;
+            border-radius: 4px;
+            z-index: 10;
+            width: 100%;
+            box-shadow: 2px 2px 3px #E9EBEE;
+            padding: 5px 0 5px 0;
+        }
+
+        .combo-box .combo-box__item {
+            z-index: 10;
+            line-height: 40px;
+            height: 40px;
+            width: 100%;
+            font-size: 13px;
+        }
+
+        .combo-box .combo-box__item:hover {
+            background-color: #E9EBEE;
+        }
+
+        .combo-box .combo-box__item:focus {
+            background-color: #E9EBEE;
+            outline: none;
+        }
+
+        .combo-box .combo-box__item--focus {
+            background-color: #E9EBEE;
+            outline: none;
+        }
+
+        .combo-box .combo-box__icon {
+            position: absolute;
+            right: 0px;
+            font-size: 16px;
+            height: 38px;
+            line-height: 40px;
+            width: 40px;
+            text-align: center;
+            border-left: 1px solid #bbb;
+        }
+
+        .combo-box .combo-box__item .icon-left {
+            padding: 0px 10px;
+            opacity: 0;
+        }
+
+        .combo-box .combo-box__item--selected {
+            color: white;
+            background-color: #019160;
+        }
+
+        .combo-box .combo-box__item--selected .icon-left {
+            opacity: 1;
+        }
+
+        .combo-box .combo-box__item--selected:focus {
+            color: #019160;
+        }
+
+        .combo-box .combo-box__item--selected:focus .icon-left {
+            color: #019160;
+        }
+
+        .combo-box .rotate {
+            transform: rotate(180deg);
+            border-right: 1px solid #bbb;
+            border-left: 0;
+        }
     </style>
 </head>
 
 <body>
-    <div class="toast toast--error">
-        <div class="toast__icon">
-            <img src="./assets/icon/alert.png" alt="">
+
+
+    <div id="combobox" data-type="Department" class="combo-box filter" tabindex="0">
+        <input type="text" class="value combo-box__text" value="Tất cả phòng ban" />
+        <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
+        <div class="collapse">
         </div>
-        <div class="toast__messenger">Nội dung đi kèm tiêu đề</div>
-        <i class="fa fa-times toast__close-icon" aria-hidden="true" onclick="hideToast($(this).parent())"></i>
     </div>
-   
-    <button onclick="showErrorToast()">Click</button>
-    
+
+    <div id="gender" class="combo-box" tabindex="0">
+        <input type="text" class="value combo-box__text" value="" />
+        <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
+        <div class="collapse">
+            <div class="combo-box__item"><i class="fa fa-check icon-left"
+                    aria-hidden="true"></i>Không xác định</div>
+            <div class="combo-box__item"><i class="fa fa-check icon-left"
+                    aria-hidden="true"></i>Nam</div>
+            <div class="combo-box__item"><i class="fa fa-check icon-left"
+                    aria-hidden="true"></i>Nữ</div>
+        </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./assets/js/common/toast.js"></script>
+    <script src="./assets/js/common/common.js"></script>
+    <script src="./assets/js/common/format.js"></script>
+    <script src="./test.js"></script>
 </body>
 
 </html>

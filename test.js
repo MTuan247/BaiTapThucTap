@@ -192,7 +192,7 @@ class ComboBox {
 
     bindCollapse(response, target, name){
         response.map((item, index) => {
-            let el = $(`<div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>${ item[name] }</div>`)
+            let el = $(`<div class="combo-box__item" tabindex="0"><i class="fa fa-check icon-left" aria-hidden="true"></i>${ item[name] }</div>`)
                 .appendTo($(target).find('.collapse'))
             for (var key in item) {
                 el.data(key, item[key])

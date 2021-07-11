@@ -58,6 +58,7 @@ function showAlarmPopup(){
     `)
 
     $('.popup__background').on('click','.popup .confirm', function(){
+        debugger
         let employeeIds = []
         $('table tbody').find('tr.selected').each((index, item) => {
             let employeeId = $(item).attr('employeeId')

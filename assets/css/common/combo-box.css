@@ -7,6 +7,7 @@
     font-size: 13px;
     color: #000000;
     cursor: pointer;
+    background-color: #fff;
 
     position: relative;
     display: flex;
@@ -23,10 +24,6 @@
     outline: none;
     border-color: #019160;
 }
-/* 
-.combo-box:hover {
-    border-color: #019160;
-} */
 
 .combo-box .combo-box__text {
     border: none;
@@ -98,6 +95,11 @@
 
 .combo-box .combo-box__item--selected:focus{
     color: #019160;
+}
+
+.combo-box .combo-box__item--focus {
+    background-color: #E9EBEE;
+    outline: none;
 }
 
 .combo-box .combo-box__item--selected:focus .icon-left {
