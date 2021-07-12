@@ -219,12 +219,11 @@ class ComboBox {
         response.map((item, index) => {
             let el = $(`<div class="combo-box__item combo-box__item--show"><i class="fa fa-check icon-left" aria-hidden="true"></i>${ item[name] }</div>`)
                 .appendTo($(target).find('.collapse'))
-            el.data('id', item[id])
             for (var key in item) {
                 el.data(key, item[key])
             }
         })
-        this.addDataToItem(target)
+        this.addDataToItem(target, id)
 
     }
 
@@ -233,9 +232,9 @@ class ComboBox {
      * Author: NMTuan (11/07/2021)
      * @param {element} el combobox-item
      */
-    addDataToItem(el){
+    addDataToItem(el, id){
         $(el).find('.combo-box__item').each((index, item) => {
-            let value = index
+            let value = $(item).data(id)
             let text = $(item).text()
             $(item).data('value', value)
             $(item).data('text', text)
@@ -249,7 +248,7 @@ class ComboBox {
     addDataToAllItem() {
         $('.combo-box').each((combobox, index) => {
             $(combobox).find('.combo-box__item').each((index, item) => {
-                let value = index
+                let value = $(item).attr('itemId')
                 let text = $(item).attr('value')
                 $(item).data('value', value)
                 $(item).data('text', text)
@@ -266,7 +265,6 @@ class ComboBox {
         let combobox = $(el).closest('.combo-box')
         combobox.data('value', $(el).data('value'))
         combobox.data('text', $(el).data('text'))
-        combobox.data('id', $(el).data('id'))
     }
 
     /**

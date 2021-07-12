@@ -18,8 +18,8 @@ class Content {
         })
 
         $('.filter-bar .refresh').click(function () {
-            let departmentId = $('#department-combobox').data('id')
-            let positionId = $('#position-combobox').data('id')
+            let departmentId = $('#department-combobox').getValue()
+            let positionId = $('#position-combobox').getValue()
             departmentId = formatNull(departmentId)
             positionId = formatNull(positionId)
             main.loadDataFiltered(main.pageSize, main.pageNumber, departmentId, positionId)
@@ -48,6 +48,22 @@ class Content {
             me.switchPage(this)
         })
 
+        $('.paging-next').click(function() {
+            me.nextPage()
+        })
+
+        $('.paging-prev').click(function() {
+            me.prevPage()
+        })
+
+        $('.paging-first').click(function(){
+            me.switchToPage(1)
+        })
+
+        $('.paging-last').click(function(){
+            me.switchToPage(main.totalPage)
+        })
+
     }
 
     /** 
@@ -72,9 +88,37 @@ class Content {
 
     switchPage(el) {
         let number = $(el).text()
-        main.pageNumber = parseInt(number)
+        this.switchToPage(number)
+    }
+
+    switchToPage(number) {
+        number = parseInt(number)
+        main.pageNumber = number
         $('.refresh').click()
+        this.updatePagingNumber(number)
         this.checkPageNumber()
+    }
+
+    nextPage() {
+        let current = $('.paging-bar .paging-number--active').text()
+        if (current == main.totalPage) {
+            return
+        } else {
+            current = parseInt(current)
+            current++
+            this.switchToPage(current)
+        }
+    }
+
+    prevPage(){
+        let current = $('.paging-bar .paging-number--active').text()
+        if (current == '1') {
+            return
+        } else {
+            current = parseInt(current)
+            current--
+            this.switchToPage(current)
+        }
     }
 
     checkPageNumber() {
@@ -87,6 +131,25 @@ class Content {
                 return
             }
         })
+    }
+
+    getPagingNumber(number){
+        if (number == 1) {
+            return [1,2,3,4]
+        } else if ( main.totalPage - number < 4 ){
+            return [main.totalPage-3, main.totalPage -2, main.totalPage -1, main.totalPage]
+        } else {
+            return [number-1,number,number+1,number+2]
+        } 
+
+    }
+
+    updatePagingNumber(number){
+        let numbers = this.getPagingNumber(number)
+        $('.paging-bar').find('.paging-number').each((index, item) => {
+            $(item).text(numbers[index])
+        })
+      
     }
 }
 

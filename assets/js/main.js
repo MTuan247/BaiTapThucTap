@@ -6,6 +6,7 @@ class Main {
         this.showToast = false;
         this.pageSize = 10;
         this.pageNumber = 1;
+        this.totalPage;
         this.loadDataFiltered(this.pageSize, this.pageNumber, '', '')
         this.initEvents()
     }
@@ -49,10 +50,11 @@ class Main {
                 url: this.url + `/employeeFilter?pageSize=${ pageSize }&pageNumber=${ pageNumber }&employeeFilter=NV&departmentId=${departmentId}&positionId=${positionId}`,
                 method: "get",
                 success: function (response) {
+                    me.totalPage = response.TotalPage
                     me.bindData(response.Data)
                 }
             }).done(function(response){
-                console.log(response)
+                me.showToast = false
                 showToast('success', 'Cập nhật dữ liệu thành công!', me.showToast)
                 me.showToast = true;
             }).fail(function(error){
