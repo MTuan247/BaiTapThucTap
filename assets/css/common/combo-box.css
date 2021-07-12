@@ -20,6 +20,10 @@
     border-color: #019160;
 }
 
+.combo-box--error {
+    border-color: #FF4747;
+}
+
 .combo-box:focus {
     outline: none;
     border-color: #019160;
@@ -98,8 +102,17 @@
 }
 
 .combo-box .combo-box__item--focus {
+    color: #000;
     background-color: #E9EBEE;
     outline: none;
+}
+
+.combo-box .combo-box__item--show {
+    display: block;
+}
+
+.combo-box .combo-box__item--hide {
+    display: none;
 }
 
 .combo-box .combo-box__item--selected:focus .icon-left {

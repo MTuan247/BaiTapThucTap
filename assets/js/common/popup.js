@@ -65,12 +65,14 @@ function showAlarmPopup(){
             employeeIds.push(employeeId)
         })
         let rs = main.deleteMultiple(employeeIds)
-        if (rs) {
-            showToast('success','Đã xóa thành công!')
-            main.loadData()
-        } else {
-            showToast('error', 'Có lỗi xảy ra!')
-        }
+        setTimeout(() => {
+            if (rs) {
+                showToast('success','Đã xóa thành công!')
+                main.loadData()
+            } else {
+                showToast('error', 'Có lỗi xảy ra!')
+            }
+        },1000)
         hidePopup()
     })
 

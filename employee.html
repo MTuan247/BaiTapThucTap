@@ -7,6 +7,7 @@
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/common/common.css">
     <link rel="stylesheet" href="./assets/css/layout/navbar.css">
     <link rel="stylesheet" href="./assets/css/layout/header.css">
     <link rel="stylesheet" href="./assets/css/layout/content.css">
@@ -72,11 +73,11 @@
                                     <input type="text" class="value combo-box__text" value="" />
                                     <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
                                     <div class="collapse">
-                                        <div class="combo-box__item"><i class="fa fa-check icon-left"
+                                        <div class="combo-box__item combo-box__item--show"><i class="fa fa-check icon-left"
                                                 aria-hidden="true"></i>Không xác định</div>
-                                        <div class="combo-box__item"><i class="fa fa-check icon-left"
+                                        <div class="combo-box__item combo-box__item--show"><i class="fa fa-check icon-left"
                                                 aria-hidden="true"></i>Nam</div>
-                                        <div class="combo-box__item"><i class="fa fa-check icon-left"
+                                        <div class="combo-box__item combo-box__item--show"><i class="fa fa-check icon-left"
                                                 aria-hidden="true"></i>Nữ</div>
                                     </div>
                                 </div>
@@ -252,28 +253,19 @@
                         <i class="fa fa-times icon-right" aria-hidden="true"></i>
                     </div>
 
-                    <div data-type="Department" class="combo-box filter" tabindex="0">
+                    <div data-type="Department" id="department-combobox" class="combo-box filter" tabindex="0">
                         <input type="text" class="value combo-box__text" value="Tất cả phòng ban" />
                         <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
                         <div class="collapse">
+                            <div class="combo-box__item combo-box__item--show"><i class="fa fa-check icon-left" aria-hidden="true"></i>Tất cả phòng ban</div>
                         </div>
                     </div>
 
-                    <div class="filter dropdown" tabindex="0">
-                        <div class="value dropdown-text">Tất cả vị trí</div>
-                        <i class="fa fa-caret-down icon-right" aria-hidden="true"></i>
+                    <div data-type="Position" id="position-combobox" class="combo-box filter" tabindex="0">
+                        <input type="text" class="value combo-box__text" value="Tất cả vị trí" />
+                        <i class="fa fa-angle-down combo-box__icon" aria-hidden="true"></i>
                         <div class="collapse">
-                            <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Tất cả vị
-                                trí
-                            </div>
-                            <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Tổng giám
-                                đốc
-                            </div>
-                            <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Trưởng
-                                phòng
-                            </div>
-                            <div class="dropdown-item"><i class="fa fa-check icon-left" aria-hidden="true"></i>Nhân viên
-                            </div>
+                            <div class="combo-box__item combo-box__item--show"><i class="fa fa-check icon-left" aria-hidden="true"></i>Tất cả vị trí</div>
                         </div>
                     </div>
 
@@ -308,25 +300,6 @@
                         </tr>
                     </thead>
                     <tbody></tbody>
-                    <!-- <tr>
-                        <td class="check-box" >
-                            <div class="custom-checkbox">
-                                <i class="fa fa-check" aria-hidden="true"></i>
-                            </div>
-                            <input type="checkbox" name="" id="">
-                        </td>
-                        <td>1</td>
-                        <td>MF900</td>
-                        <td>NMT</td>
-                        <td>Nam</td>
-                        <td>24/07/2000</td>
-                        <td>0339642686</td>
-                        <td>abc123456@zxc.vn</td>
-                        <td>Web Fresher</td>
-                        <td>Khối sản xuất</td>
-                        <td>10.000</td>
-                        <td>Intern</td>
-                    </tr> -->
                 </table>
             </div>
             <div class="paging-bar">
@@ -338,7 +311,7 @@
                         style="background-image: url('./assets/icon/btn-firstpage.svg');"></div>
                     <div class="paging-item paging-control"
                         style="background-image: url('./assets/icon/btn-prev-page.svg');"></div>
-                    <div class="paging-item paging-number--active">1</div>
+                    <div class="paging-item paging-number paging-number--active">1</div>
                     <div class="paging-item paging-number">2</div>
                     <div class="paging-item paging-number">3</div>
                     <div class="paging-item paging-number">4</div>
@@ -362,10 +335,10 @@
     <script src="./assets/js/common/toast.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/page/employee.js"></script>
+    <script src="./assets/js/content.js"></script>
     <script src="./assets/js/combo-box.js"></script>
     <script src="./assets/js/dropdown.js"></script>
     <script src="./assets/js/input.js"></script>
-    <script src="./assets/js/grid.js"></script>
     <script src="assets/js/form.js"></script>
     <script src="./assets/js/form-validate.js"></script>
 </body>

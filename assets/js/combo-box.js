@@ -4,18 +4,32 @@ $(document).ready(function () {
 })
 
 $.fn.getValue = function () {
+    let text = $(this).find('input').val()
+    $(this).find('.combo-box__item').each((index, item) => {
+        if($(item).data('text') == text ) {
+            let value = $(item).data('value')
+            $(this).data('value', value)
+        }
+    })
     return $(this).data('value')
 }
 
 $.fn.getText = function () {
+    let text = $(this).find('input').val()
+    $(this).find('.combo-box__item').each((index, item) => {
+        if($(item).data('text') == text ) {
+            let text = $(item).data('text')
+            $(this).data('text', text)
+        }
+    })
     return $(this).data('text')
 }
 
 class ComboBox {
     constructor() {
         let me = this
-        this.loadCollapse('.combo-box[data-type=Department]','http://cukcuk.manhnv.net/api/Department','DepartmentName')
-        this.loadCollapse('.combo-box[data-type=Position]','http://cukcuk.manhnv.net/v1/Positions','PositionName')
+        this.loadCollapse('.combo-box[data-type=Department]','http://cukcuk.manhnv.net/api/Department','DepartmentName', 'DepartmentId')
+        this.loadCollapse('.combo-box[data-type=Position]','http://cukcuk.manhnv.net/v1/Positions','PositionName','PositionId')
         this.initEvent()
         this.addDataToAllItem()
     }
@@ -33,7 +47,6 @@ class ComboBox {
         });
 
         $(".combo-box").keypress(function (e) {
-            debugger
             let combobox = $(this)
             if (e.code == "Enter") {
                 if (combobox.find('.collapse').css('display') == 'none') {
@@ -62,6 +75,7 @@ class ComboBox {
 
         $(".combo-box input").focusout(function(){
             $(this).parent().removeClass('combo-box--focus')
+            me.checkItemExist($(this).parent())
         })
 
         $(".combo-box").keydown(function(e){
@@ -159,9 +173,11 @@ class ComboBox {
             text = removeAccents(text)
             text = text.toLowerCase()
             if (text.includes(value)) {
-                $(item).show()
+                $(item).removeClass('combo-box__item--hide')
+                $(item).addClass('combo-box__item--show')
             } else {
-                $(item).hide()
+                $(item).addClass('combo-box__item--hide')
+                $(item).removeClass('combo-box__item--show')
             }
         })
     }
@@ -172,16 +188,17 @@ class ComboBox {
      * @param {element} el element combo-box
      * @param {url} url đường dẫn đến api
      * @param {string} name tên trường cần hiển thị
+     * @param {string} id id của item
      * @param {function} func callback truyền vào hàm thực thi sau khi load xong
      */
-    loadCollapse(el, url, name, func = function(){}) {
+    loadCollapse(el, url, name, id, func = function(){}) {
         let me = this
         try {
             $.ajax({
                 url: url,
                 method: "get",
                 success: function(response){
-                    me.bindCollapse(response, el ,name)
+                    me.bindCollapse(response, el ,name, id)
                     func()
                 }
             })
@@ -190,10 +207,19 @@ class ComboBox {
         }
     }
 
-    bindCollapse(response, target, name){
+    /**
+     * Hàm load dữ liệu vào combobox
+     * Author: NMTuan (11/07/2021)
+     * @param {json} response dữ liệu load từ api
+     * @param {element} target combobox cần load
+     * @param {string} name tên trường cần hiển thị lên combobox-item
+     * @param {string} id id của item
+     */
+    bindCollapse(response, target, name, id){
         response.map((item, index) => {
-            let el = $(`<div class="combo-box__item"><i class="fa fa-check icon-left" aria-hidden="true"></i>${ item[name] }</div>`)
+            let el = $(`<div class="combo-box__item combo-box__item--show"><i class="fa fa-check icon-left" aria-hidden="true"></i>${ item[name] }</div>`)
                 .appendTo($(target).find('.collapse'))
+            el.data('id', item[id])
             for (var key in item) {
                 el.data(key, item[key])
             }
@@ -202,43 +228,77 @@ class ComboBox {
 
     }
 
+    /**
+     * Hàm lưu data cho các item
+     * Author: NMTuan (11/07/2021)
+     * @param {element} el combobox-item
+     */
     addDataToItem(el){
         $(el).find('.combo-box__item').each((index, item) => {
             let value = index
-            let text = $(item).attr('value')
+            let text = $(item).text()
             $(item).data('value', value)
             $(item).data('text', text)
         })
     }
 
+    /**
+     * Hàm lưu data cho mọi combobox
+     * Author: NMTuan (11/07/2021)
+     */
     addDataToAllItem() {
-        $('.combo-box').find('.combo-box__item').each((index, item) => {
-            let value = index
-            let text = $(item).attr('value')
-            $(item).data('value', value)
-            $(item).data('text', text)
+        $('.combo-box').each((combobox, index) => {
+            $(combobox).find('.combo-box__item').each((index, item) => {
+                let value = index
+                let text = $(item).attr('value')
+                $(item).data('value', value)
+                $(item).data('text', text)
+            })
         })
     }
 
+    /**
+     * Hàm lưu data cho combobox khi chọn 1 item
+     * Author: NMTuan (11/07/2021)
+     * @param {element} el combobox-item
+     */
     addDataToCombobox(el) {
         let combobox = $(el).closest('.combo-box')
         combobox.data('value', $(el).data('value'))
         combobox.data('text', $(el).data('text'))
+        combobox.data('id', $(el).data('id'))
     }
 
+    /**
+     * Hàm chuyển focus lên combobox-item đầu tiên
+     * Author: NMTuan (11/07/2021)
+     * @param {element} el combobox
+     */
     firstItem(el){
-        $(el).find('.combo-box__item').removeClass('combo-box__item--focus')
-        $(el).find('.combo-box__item').first().addClass('combo-box__item--focus')
+        $(el).find('.combo-box__item--show').removeClass('combo-box__item--focus')
+        $(el).find('.combo-box__item--show').first().addClass('combo-box__item--focus')
     }
 
+    /**
+     * Hàm chuyển focus xuống combobox item cuối cùng
+     * Auhtor: NMTuan (11/07/2021)
+     * @param {element} el combobox
+     */
     lastItem(el){
-        $(el).find('.combo-box__item').removeClass('combo-box__item--focus')
-        $(el).find('.combo-box__item').last().addClass('combo-box__item--focus')
+        $(el).find('.combo-box__item--show').removeClass('combo-box__item--focus')
+        $(el).find('.combo-box__item--show').last().addClass('combo-box__item--focus')
     }
 
+    /**
+     * Hàm chuyển sang item tiếp theo
+     * Author: NMTuan (11/07/2021)
+     * @param {element} el combobox
+     * @returns 
+     */
     nextItem(el) {
         let current = $(el).find('.combo-box__item--focus').first()
-        let next = $(current).next('.combo-box__item')
+        let next = $(current).nextAll('.combo-box__item--show').first()
+
         if (next.length == 0) {
             this.firstItem(el)
             return;
@@ -247,15 +307,44 @@ class ComboBox {
         $(next).addClass('combo-box__item--focus')
     }
 
+    /**
+     * Hàm lùi về combobox item trước
+     * Author: NMTuan (11/07/2021)
+     * @param {element} el combobox
+     * @returns 
+     */
     prevItem(el) {
         let current = $(el).find('.combo-box__item--focus').first()
-        let prev = $(current).prev('.combo-box__item')
+        let prev = $(current).prevAll('.combo-box__item--show').first()
         if (prev.length == 0) {
             this.lastItem(el)
             return;
         }
         $(current).removeClass('combo-box__item--focus')
         $(prev).addClass('combo-box__item--focus')
+    }
+
+    /**
+     * Hàm kiểm tra giá trị có tồn tại trong combobox
+     * @param {element} el combobox
+     */
+    checkItemExist(el) {
+        let text = $(el).find('input').val()
+        let rs = false;
+        $(el).find('.combo-box__item').each((index, item) => {
+            if ( $(item).text() == text ) {
+                rs = true
+                $(el).removeClass('combo-box--error')
+                $(el).attr('title', '')
+            }
+        })
+        setTimeout(()=>{
+            if (rs == false) {
+                $(el).addClass('combo-box--error')
+                $(el).attr('title', 'Không tồn tại giá trị')
+            }
+        }, 300)
+        
     }
 
 }

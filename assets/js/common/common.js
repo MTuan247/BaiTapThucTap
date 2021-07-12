@@ -1,5 +1,10 @@
 $(document).ready(function(){
     checkMatchUrl()
+    
+    $('.toggle-icon').click(function () {
+        $('.content').toggleClass('content--collapse')
+    })
+    
 })
 
 function checkMatchUrl(href){

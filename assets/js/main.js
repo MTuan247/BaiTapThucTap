@@ -3,9 +3,10 @@ class Main {
         this.host = 'http://cukcuk.manhnv.net/v1/'
         this.path = 'Employees'
         this.url = this.host + this.path
-        this.firstLoad = true;
-        this.data = []
-        this.loadData()
+        this.showToast = false;
+        this.pageSize = 10;
+        this.pageNumber = 1;
+        this.loadDataFiltered(this.pageSize, this.pageNumber, '', '')
         this.initEvents()
     }
 
@@ -26,13 +27,34 @@ class Main {
                 url: this.url,
                 method: "get",
                 success: function (response) {
-                    me.data = response
-                    me.bindData(me.data)
+                    me.bindData(response)
                 }
             }).done(function(response){
                 console.log(response)
-                showToast('success', 'Cập nhật dữ liệu thành công!', me.firstLoad)
-                me.firstLoad = false;
+                showToast('success', 'Cập nhật dữ liệu thành công!', me.showToast)
+                me.showToast = true;
+            }).fail(function(error){
+                console.log(error)
+                showToast('error','Có lỗi xảy ra!')
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    loadDataFiltered(pageSize, pageNumber, departmentId, positionId ) {
+        let me = this;
+        try {
+            $.ajax({
+                url: this.url + `/employeeFilter?pageSize=${ pageSize }&pageNumber=${ pageNumber }&employeeFilter=NV&departmentId=${departmentId}&positionId=${positionId}`,
+                method: "get",
+                success: function (response) {
+                    me.bindData(response.Data)
+                }
+            }).done(function(response){
+                console.log(response)
+                showToast('success', 'Cập nhật dữ liệu thành công!', me.showToast)
+                me.showToast = true;
             }).fail(function(error){
                 console.log(error)
                 showToast('error','Có lỗi xảy ra!')

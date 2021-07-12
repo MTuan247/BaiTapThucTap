@@ -10,8 +10,8 @@ function showErrorToast() {
     `).appendTo('body').delay(2000).queue(function() { $(this).remove(); });
 }
 
-function showToast(type, message, invalid = false) {
-    if (invalid) return;
+function showToast(type, message, show = true) {
+    if (!show) return;
     $(`
         <div class="toast toast--${type}">
             <div class="toast__icon">
