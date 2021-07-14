@@ -94,9 +94,20 @@ class Content {
     switchToPage(number) {
         number = parseInt(number)
         main.pageNumber = number
+        Content.updatePagingLeft(number)
         $('.refresh').click()
         this.updatePagingNumber(number)
         this.checkPageNumber()
+    }
+
+    static updatePagingLeft(number) {
+        number = parseInt(number)
+        let pageSize = parseInt(main.pageSize)
+        let totalRecord = parseInt(main.totalRecord)
+        let numberStart = (number - 1 ) * pageSize + 1;
+        let numberEnd = ( number ) * pageSize;
+        if (numberEnd > totalRecord ) numberEnd = totalRecord
+        $('.paging-bar .paging-left').find('span').text(numberStart + '-' + numberEnd + '/' + totalRecord)
     }
 
     nextPage() {

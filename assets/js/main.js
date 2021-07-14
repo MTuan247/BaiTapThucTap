@@ -7,6 +7,7 @@ class Main {
         this.pageSize = 10;
         this.pageNumber = 1;
         this.totalPage;
+        this.totalRecord;
         this.loadDataFiltered(this.pageSize, this.pageNumber, '', '')
         this.initEvents()
     }
@@ -51,11 +52,13 @@ class Main {
                 method: "get",
                 success: function (response) {
                     me.totalPage = response.TotalPage
+                    me.totalRecord = response.TotalRecord
                     me.bindData(response.Data)
                 }
             }).done(function(response){
                 me.showToast = false
                 showToast('success', 'Cập nhật dữ liệu thành công!', me.showToast)
+                if(me.showToast) Content.updatePagingLeft(main.pageNumber)
                 me.showToast = true;
             }).fail(function(error){
                 console.log(error)
